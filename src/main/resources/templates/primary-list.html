@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<title>My schoolhk</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="../css/bootstrap.css"></link>
+
+<link rel="stylesheet" href="../css/colors/main.css" id="colors"></link>
+<link rel="stylesheet" href="../css/style.css"></link>
+<!-- <link rel="stylesheet" type="text/css" href="../css/style1.css"></link> -->
+<link rel="stylesheet" href="../css/ng-grid.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/ui-grid1.css"></link> 
+<link rel="stylesheet" type="text/css" href="../css/ui-grid.css"></link>
+<!-- jQuery library -->
+<script  type="text/javascript" src="../scripts/updated/jquery.min.js"></script>
+<script src="../scripts/updated/angular.js"></script>
+    <script src="../scripts/updated/angular-touch.js"></script>
+    <script src="../scripts/updated/angular-animate.js"></script>
+    <script src="../scripts/updated/csv.js"></script>
+    <script src="../scripts/updated/pdfmake.js"></script>
+    <script src="../scripts/updated/vfs_fonts.js"></script>
+    <script src="../scripts/updated/lodash.min.js"></script>
+    <script src="../scripts/updated/jszip.min.js"></script>
+    <script src="../scripts/updated/excel-builder.dist.js"></script>
+    
+
+    <script src="../scripts/updated/ui-grid.js"></script>
+    
+    
+<script data-require="ng-grid@*" data-semver="2.0.9" src="../scripts/updated/ng-grid2.0.js"></script> 
+<script src="../scripts/updated/bootstrap.min.js"></script>
+ <script type="text/javascript" src="../js/main.js"></script>
+
+
+<!-- Latest compiled JavaScript -->
+ <script data-require="angular.js@1.2.x" src="../scripts/updated/angular1.js" data-semver="1.2.21"></script>
+<script data-require="ng-grid@*" data-semver="2.0.9" src="../scripts/updated/ng-grid2.0.js"></script>
+ <script type="text/javascript" src="../js/main.js"></script>
+
+
+<!-- Scripts
+================================================== -->
+
+<style>
+#navigation.style-1 {
+    padding:0;
+    margin-left: 115px;       
+     background-color: #66b2ff;
+    float: right;
+    margin-right: 75px;
+}
+header.fullwidth .container {
+    width: 100%;  
+    padding: 0px 60px;
+}
+.active{
+    background: #1a8cff;   
+     }
+     #navigation.style-1 ul li {
+    margin: 0px;
+}
+.loading {
+  position: fixed;
+  z-index: 999;
+  height: 2em;
+  width: 2em;
+  overflow: show;
+  margin: auto;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+/* Transparent Overlay */
+.loading:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* :not(:required) hides these rules from IE9 and below */
+.loading:not(:required) {
+  /* hide "loading..." text */
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+
+.loading:not(:required):after {
+  content: '';
+  display: block;
+  font-size: 10px;
+  width: 1em;
+  height: 1em;
+  margin-top: -0.5em;
+  -webkit-animation: spinner 800ms infinite linear;
+  -moz-animation: spinner 800ms infinite linear;
+  -ms-animation: spinner 800ms infinite linear;
+  -o-animation: spinner 800ms infinite linear;
+  animation: spinner 800ms infinite linear;
+  border-radius: 0.5em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.5) -1.5em 0 0 0, rgba(0, 0, 0, 0.5) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+  box-shadow: rgba(0, 0, 0, 0.75) 1.5em 0 0 0, rgba(0, 0, 0, 0.75) 1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) 0 1.5em 0 0, rgba(0, 0, 0, 0.75) -1.1em 1.1em 0 0, rgba(0, 0, 0, 0.75) -1.5em 0 0 0, rgba(0, 0, 0, 0.75) -1.1em -1.1em 0 0, rgba(0, 0, 0, 0.75) 0 -1.5em 0 0, rgba(0, 0, 0, 0.75) 1.1em -1.1em 0 0;
+}
+
+/* Animation */
+
+@-webkit-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-moz-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-o-keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+</style>
+</head>
+
+<body ng-controller="primaryController">
+<div class="loading" ng-if="loading">Loading&#8230;</div>
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header Container
+================================================== -->
+<header id="header-container" class="fixed fullwidth" style="background-color:#14a661">
+
+	<!-- Header -->
+	<div id="header" class="not-sticky">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+				<div class="left-side">
+				
+				<!-- Logo -->
+				<div id="logo">
+					<a href="home"><img src="../images/logo .svg" style="width: 60px;height: 60px;" alt=""></img>
+					<img src="../images/header.png"  alt=""></img></a>
+				</div>
+
+				<!-- Mobile Navigation -->
+				<div class="menu-responsive">
+					<i class="fa fa-reorder menu-trigger"></i>
+				</div>
+</div>
+				<!-- Main Navigation -->
+					<div class="clearfix"></div>
+				<nav id="navigation" class="style-1">
+					<ul id="responsive">
+
+						<li><a href="/kindergarten-list">幼稚園</a>
+							
+						</li>
+
+						<li class="active"><a href="/primary-list">小學</a>
+							
+						</li>
+
+						<li><a href="/secondary-list">中學</a>
+							
+						</li>
+
+						
+					</ul>
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+	
+
+		</div>
+	
+	<!-- Header / End -->
+
+</header>
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+<!-- Content
+================================================== -->
+<div class="fs-container">
+
+	<div class="fs-inner-container content" style = "width: 100%;">
+		<div class="fs-content">
+				<input type="hidden" id="district" th:value="${district}"></input>
+
+			<!-- Search -->
+			<section class="search">
+
+				<div class="row">					
+					<div >
+                       <h1 class="page-heading">小學</h1>
+					</div>	
+					<div style="margin-bottom: 20px;">
+					<img src="../images/add1.jpg" alt="add1" class="img-responsive" style="margin: 0 auto;"></img>
+					</div>		
+					<div class="descrp">
+					<h2>全面搜寻所有香港小学</h2>
+					<p>全港有大約 524 間小學，我們根據他們的 資助種類、所屬宗教、小學校網、學生性別、升中備註，整理了以下目錄，方便你查閱和多方面了解小學的分佈。請使用提供的篩選名單功能，點擊個別連結，會加載學校的詳細資訊網頁。</p>
+					</div>	
+					
+					<div class="row">
+						<lable class="pull-right"><B>輸入任何字詞: </B>
+							<input ng-model="searchText" ng-change="refreshData()" placeholder="Search..."></input>
+						</lable>
+						<div ui-grid="gridOptions" ui-grid-pagination='' class="grid" style="height:600px !important"></div>
+					</div>	
+					<div class="clearfix"></div>
+				</div>
+
+			</section>
+			<!-- Search / End -->
+			<div class="schoolft">
+						 <div class="col-sm-2">
+							<select ng-model="schoolCategory" ng-change="filterPrimaryData()" class="form-control" >
+								<option selected="true" value="all" >類別</option>
+								<option ng-repeat="category in primaryFilterData.schoolCategory" value="{{category}}">{{category}}</option>
+							</select>
+						</div> 
+						 <div class="col-sm-2">
+							<select ng-model="schoolDistrict" ng-change="filterPrimaryData()" class="form-control">
+								<option selected="true" value="all" >地區</option>
+								<option ng-repeat="district in primaryFilterData.schoolDistricts" value="{{district}}">{{district}}</option>
+							</select>
+						</div>
+						<div class="col-sm-2" >
+							<select ng-model="religion" ng-change="filterPrimaryData()" class="form-control">
+								<option selected="true" value="all" >按宗教选择</option>
+								<option ng-repeat="religion1 in primaryFilterData.religion" value="{{religion1}}">{{religion1}}</option>
+								
+							</select>
+						</div>
+						 <div class="col-sm-2">
+							<select ng-model="studentGender" ng-change="filterPrimaryData()" class="form-control">
+								<option selected="true" value="all" >选择按学生性别</option>
+								<option ng-repeat="gender in primaryFilterData.studentGender" value="{{gender}}">{{gender}}</option>
+								
+							</select>
+						</div>
+						 <div class="col-sm-2">
+							<select ng-model="schoolId" ng-change="filterPrimaryData()" class="form-control">
+								<option selected="true" value="all" >按学校编号选择</option>
+								<option ng-repeat="id in primaryFilterData.schoolId" value="{{id}}">{{id}}</option>
+								
+							</select>
+						</div>  
+
+					</div>
+						<div class="row district-data">
+	   						 <h2 class="text-center text-h2">18區學校名單</h2>
+	      			<!-- <div class="col-md-4">
+	       				<div class="links-list text-center">	 
+	      					 <h2>全香港幼稚園</h2>      
+	          			  	 <p th:each="district : ${kgDistricts}"><a th:href="'kindergarten-list?district=' + ${district.district}" th:text="${district.district + ' : ' + district.count}"><i class="fa fa-list-ul" aria-hidden="true" style="margin-right:10px"></i></a></p>
+	    		       </div>
+	 			    </div> -->
+	       				<div class="col-md-12">
+	      					 <div class="links-list text-center">	 
+	      					   <h2>全香港小學</h2>        
+	         				  <p th:each="district : ${psDistricts}"><a th:href="'primary-list?district=' + ${district.district}" th:text="${district.district + ' : ' + district.count}"><i class="fa fa-list-ul" aria-hidden="true" style="margin-right:10px"></i></a></p>
+	    				</div>
+	 				</div>
+	      			 	<!-- <div class="col-md-4">
+	     					 <div class="links-list text-center">	  
+	       						 <h2>全香港中學</h2>       
+	              				 <p th:each=" district : ${ssDistricts}"><a th:href="'secondary-list?district=' + ${district.district}" th:text="${district.district + ' : ' + district.count}"><i class="fa fa-list-ul" aria-hidden="true" style="margin-right:10px"></i></a></p>
+	     				</div>
+	  				</div> -->
+	 					 </div>	
+		<section class="listings-container margin-top-30">
+			<!-- Pagination Container -->
+			<div class="row fs-listings">
+				<div class="col-md-12">
+
+					<!-- Pagination -->
+					<div class="clearfix"></div>
+					<div class="clearfix"></div>
+					<!-- Pagination / End -->
+					
+					<!-- Copyrights -->
+					<div class="copyrights margin-top-0">©2017 Myschool_Hk。版權所有</div>
+
+				</div>
+			</div>
+			<!-- Pagination Container / End -->
+		</section>
+
+		</div>
+	</div>
+	<div class="fs-inner-container map-fixed">
+	<div class="outer-div">
+       <div class="addbanner1">	 
+          <div>	   
+	     <a href="#"><img src="../images/addimg2.jpg" class="img-responsive" alt=""></img></a>
+		 </div>
+	   </div>
+	   
+	    <div class="addbanner2">		
+	    <a href="#"><img src="../images/addimg2.jpg" class="img-responsive" alt=""></img></a>   
+	   
+	   </div>
+	   </div>
+		<!-- Map -->
+		<div class="clearfix"></div>
+		<div id="map-container">
+		    <div id="map" data-map-zoom="9" data-map-scroll="true">
+		        <!-- map goes here -->
+		    </div>
+		</div>
+
+	</div>
+	</div>
+</div>
+
+
+
+<!-- Wrapper / End -->
+
+<!-- Scripts
+================================================== -->
+<script type="text/javascript" src="../scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../scripts/jpanelmenu.min.js"></script>
+<script type="text/javascript" src="../scripts/chosen.min.js"></script>
+<script type="text/javascript" src="../scripts/slick.min.js"></script>
+<script type="text/javascript" src="../scripts/rangeslider.min.js"></script>
+<script type="text/javascript" src="../scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="../scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="../scripts/counterup.min.js"></script>
+<script type="text/javascript" src="../scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="../scripts/custom.js"></script>
+
+<!-- Maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyD1RCTgKr9a9wx_0OWasJB5nbbk1ONgwjg&amp;sensor=false&amp;language=en"></script>
+<script type="text/javascript" src="../scripts/infobox.min.js"></script>
+<script type="text/javascript" src="../scripts/markerclusterer.js"></script>
+<script type="text/javascript" src="../scripts/maps.js"></script>
+
+<script th:inline="javascript">
+//<![CDATA[
+var pSEntity = "";
+//]]> 
+//<![CDATA[
+var kGEntity = "";
+//]]>
+//<![CDATA[
+var sSEntity = "";
+//]]>
+</script>
+</body>
+</html>
+
+
+

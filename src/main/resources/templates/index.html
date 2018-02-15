@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<!-- <head> -->
+<head lang="en">
+
+<!-- Basic Page Needs
+================================================== -->
+<title>My schoolhk</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+
+<link rel="stylesheet" href="../css/colors/main.css" id="colors"></link>
+<link rel="stylesheet" href="../css/style.css"></link>
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script data-require="angular.js@1.2.x" src="https://code.angularjs.org/1.2.21/angular.js" data-semver="1.2.21"></script>
+<script data-require="ng-grid@*" data-semver="2.0.9" src="http://cdnjs.cloudflare.com/ajax/libs/ng-grid/2.0.9/ng-grid.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script type="text/javascript" src="../js/main.js"></script>
+  <script type="text/javascript" src="../js/angular-ui-router.js"></script>
+ 
+ 
+ 
+ <!-- Scripts
+================================================== -->
+<script type="text/javascript" src="../scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../scripts/jpanelmenu.min.js"></script>
+<script type="text/javascript" src="../scripts/chosen.min.js"></script>
+<script type="text/javascript" src="../scripts/slick.min.js"></script>
+<script type="text/javascript" src="../scripts/rangeslider.min.js"></script>
+<script type="text/javascript" src="../scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="../scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="../scripts/counterup.min.js"></script>
+<script type="text/javascript" src="../scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="../scripts/custom.js"></script>
+
+
+<!-- Style Switcher
+================================================== -->
+<style>
+
+#navigation.style-1 {
+    padding:0;
+    margin-left: 115px;       
+     background-color: #66b2ff;
+    float: right;
+    margin-right: 75px;
+}
+header.fullwidth .container {
+    width: 100%;  
+    padding: 0px 60px;
+}
+.active{
+    background: #1a8cff;   
+     }
+     #navigation.style-1 ul li {
+    margin: 0px;
+}
+.links.fa {
+    margin-right: 10px;
+
+}
+ a:hover,a:focus{
+text-decoration:none;
+}
+
+</style>
+<script src="../scripts/switcher.js"></script>
+</head>
+
+<body ng-app="app">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+<header id="header-container" style="background-color: #14a661;">
+	<!-- Header -->
+	<div id="header">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+			<div class="left-side">
+				
+				<!-- Logo -->
+				<div id="logo">
+					<a href="home"><img src="../images/logo .svg" style="width: 60px;height: 60px;" alt=""></img>
+					<img src="../images/header.png"  alt=""></img></a>
+				</div>
+</div>
+			<div class="right-side">
+				<div class="searchContent">  
+			  <!-- <form class="navbar-form" >
+				<div class="input-group add-on ">
+				  <input type="text" class="form-control search-field1" placeholder="Search"></input>
+				  <div class="input-group-btn">
+					<button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+				  </div>
+				</div>
+			  </form> -->
+  
+  
+</div>
+
+
+			</div>
+				<!-- Mobile Navigation -->
+				<div class="clearfix"></div>
+				<div class="menu-responsive">
+					<i class="fa fa-reorder menu-trigger"></i>
+				</div>
+
+				<!-- Main Navigation -->
+				<nav id="navigation" class="style-1">
+					<ul id="responsive">
+
+						<li><a href="/kindergarten-list">幼稚園</a>
+							
+						</li>
+
+						<li><a href="/primary-list">小學</a>
+							
+						</li>
+
+						<li><a href="/secondary-list">中學 </a>
+							
+						</li>
+						
+					</ul>
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			
+	
+
+		</div>
+	</div>
+	<!-- Header / End -->
+
+</header>
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+<!-- <div ui-view></div> -->
+
+<div class="container">
+  <div class="main-sec">
+      <div class="col-md-4">
+	     <div class="section1">
+	     <a href="/kindergarten-list">
+	     	<img src="../images/section-banner-1.png" class="img-responsive homeShadow" alt="school"></img>
+	     </a>	   
+	     
+		 </div>
+	  </div>
+	  <div class="col-md-4">
+	   <div class="section2">
+	   		<a href="/primary-list">
+	        	<img src="../images/section-banner-2.png" class="img-responsive homeShadow" alt="school"></img>
+	        </a>
+		 </div>
+	
+	  </div>
+	  <div class="col-md-4">
+	   <div class="section3">
+	   		<a href="/secondary-list">
+          		<img src="../images/section-banner-3.png" class="img-responsive homeShadow" alt="school"></img>
+          	</a>
+		 </div>
+	 
+	  </div>
+	  <div class="row">
+	    <h2 class="text-center" style="color: #428bca;">18區學校名單</h2>
+	    </div>
+	    
+	      <div class="col-md-4">
+	       <div class="links-list">	 
+	       <h2>全香港幼稚園</h2>      
+	            <p th:each="district : ${kgDistricts}"><a th:href="'kindergarten-list?district=' + ${district.district}" th:text="${district.district + ' : ' + district.count}"><i class="fa fa-list-ul" aria-hidden="true" style="margin-right:10px"></i></a></p>
+	     </div>
+	 
+	  </div>
+	       <div class="col-md-4">
+	       <div class="links-list">	 
+	         <h2>全香港小學 </h2>        
+	            <p th:each="district : ${psDistricts}"><a th:href="'primary-list?district=' + ${district.district}" th:text="${district.district + ' : ' + district.count}"><i class="fa fa-list-ul" aria-hidden="true" style="margin-right:10px"></i></a></p>
+	     </div>
+	 
+	  </div>
+	   
+	        <div class="col-md-4">
+	       <div class="links-list">	  
+	         <h2>全香港中學</h2>       
+	              <p th:each=" district : ${ssDistricts}"><a th:href="'secondary-list?district=' + ${district.district}" th:text="${district.district + ' : ' + district.count}"><i class="fa fa-list-ul" aria-hidden="true" style="margin-right:10px"></i></a></p>
+	     </div>
+	 
+	  </div>
+	   
+	   
+	  </div>
+
+  </div>
+
+</div>
+
+
+		
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">©2017 Myschool_Hk。版權所有</div>
+			</div>
+		</div>
+
+
+
+
+<!-- Footer / End -->
+
+
+<!-- Back To Top Button -->
+<div id="backtotop"><a href="#"></a></div>
+
+
+<!-- Wrapper / End -->
+
+
+
+</body>
+</html>

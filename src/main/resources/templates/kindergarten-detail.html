@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<title>My schoolhk</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="../css/bootstrap.css"></link>
+
+<link rel="stylesheet" href="../css/colors/main.css" id="colors"></link>
+<link rel="stylesheet" href="../css/style.css"></link>
+<!-- <link rel="stylesheet" type="text/css" href="../css/style1.css"></link> -->
+<link rel="stylesheet" href="../css/ng-grid.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/ui-grid.css"></link>
+<!-- jQuery library -->
+<script  type="text/javascript" src="../scripts/updated/jquery.min.js"></script>
+<script src="../scripts/updated/angular.js"></script>
+    <script src="../scripts/updated/angular-touch.js"></script>
+    <script src="../scripts/updated/angular-animate.js"></script>
+    <script src="../scripts/updated/csv.js"></script>
+    <script src="../scripts/updated/pdfmake.js"></script>
+    <script src="../scripts/updated/vfs_fonts.js"></script>
+    <script src="../scripts/updated/lodash.min.js"></script>
+    <script src="../scripts/updated/jszip.min.js"></script>
+    <script src="../scripts/updated/excel-builder.dist.js"></script>
+    
+
+    <script src="../scripts/updated/ui-grid.js"></script>
+    
+    
+<script data-require="ng-grid@*" data-semver="2.0.9" src="../scripts/updated/ng-grid2.0.js"></script> 
+<script src="../scripts/updated/bootstrap.min.js"></script>
+ <script type="text/javascript" src="../js/main.js"></script>
+
+
+<!-- Latest compiled JavaScript -->
+ <script data-require="angular.js@1.2.x" src="../scripts/updated/angular1.js" data-semver="1.2.21"></script>
+<script data-require="ng-grid@*" data-semver="2.0.9" src="../scripts/updated/ng-grid2.0.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/ui-grid1.css"></link> 
+ <script type="text/javascript" src="../js/main.js"></script>
+
+<!-- Scripts
+================================================== -->
+
+<style>
+#navigation.style-1 {
+    padding:0;
+    margin-left: 115px;       
+     background-color: #66b2ff;
+    float: right;
+    margin-right: 75px;
+}
+header.fullwidth .container {
+    width: 100%;  
+    padding: 0px 60px;
+}
+.active{
+    background: #1a8cff;   
+     }
+     #navigation.style-1 ul li {
+    margin: 0px;
+}
+.fs-inner-container.map-fixed {
+    height: 400px;
+     position: relative; 
+    top: 0;
+    padding-top: 0px !important;
+}
+.fs-inner-container {
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+}
+.fs-inner-container.content {
+    width: 100%;
+    background-color: #f7f7f7;
+    z-index: 995;
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.12);
+    position: relative;
+    padding-top: 0px;
+}
+
+@media (max-width:991px){
+.fs-inner-container.map-fixed {
+    margin-bottom: 65px;
+    height: 400px;
+    position: relative;
+    top: 0;
+    padding-top: 0px !important;
+}
+}
+</style>
+</head>
+
+
+<body ng-controller="primaryController">
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header Container
+================================================== -->
+<header id="header-container" class="fixed fullwidth" style="background-color:#66b2ff">
+
+	<!-- Header -->
+	<div id="header" class="not-sticky">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+			<div class="left-side">
+				
+				<!-- Logo -->
+				<div id="logo">
+					<a href="home"><img src="../images/logo .svg" style="width: 60px;height: 60px;" alt=""></img>
+					<img src="../images/header.png"  alt=""></img></a>
+				</div>
+
+				<!-- Mobile Navigation -->
+				<div class="menu-responsive">
+					<i class="fa fa-reorder menu-trigger"></i>
+				</div>
+</div>
+				<!-- Main Navigation -->
+					<div class="clearfix"></div>
+				<nav id="navigation" class="style-1">
+					<ul id="responsive">
+
+						<li class="active"><a href="/kindergarten-list">幼稚園</a>
+							
+						</li>
+
+						<li><a href="/primary-list">小學</a>
+							
+						</li>
+
+						<li><a href="/secondary-list">中學</a>
+							
+						</li>
+						
+					</ul>
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+	
+
+		</div>
+	
+	<!-- Header / End -->
+
+</header>
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+<!-- Content
+================================================== -->
+<div class="fs-container">
+
+	<div class="fs-inner-container content">
+		<div class="fs-content">
+
+			<!-- Search -->
+		<!-- Search -->
+			  <section class="search">
+                     <div class="row">
+                        <div >
+                           <h1 class="page-heading" style="color:#66b2ff" th:text="${kGEntity.district}"></h1>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                           <img src="../images/add1.jpg" alt="add1" class="img-responsive" style="margin: 0 auto;"></img>
+                        </div>
+                        <div class="col-md-7">
+                           <div class="descrp">
+                              <h2 style="color: #428bca;" th:text="${kGEntity.schoolName}"></h2>
+                              <h3 class="h3class" style="color: #428bca;" th:text="${kGEntity.schoolName}"></h3>
+                              <p th:text="${kGEntity.schoolDiscription}">
+                              </p>
+                           </div>
+                        </div>
+                        <div class="col-md-5 image-school">
+                           <img th:with="url=${kGEntity.imageTop !=null?kGEntity.imageTop:'../images/top.png'}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
+                           <p style="text-align: center;font-size: 14px;" th:text="${kGEntity.schoolName}"></p>
+                        </div> 
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>學校類別</h3><!-- School category -->
+                        </div>
+                        <div class="pvsch"> 
+                           <!-- <h2 th:text="${kGEntity.schoolCategoryTitle}"></h2> -->
+                        </div> 
+                        <p class="pvschp" th:text="${kGEntity.schoolCategory}">
+                        </p>
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>學校歷史</h3><!--  School history -->
+                        </div>
+                        <div class="pvsch">
+                           <h2 th:text="${'成立于 ' + kGEntity.schoolFoundingyear}"></h2>
+                        </div>
+                        <p class="pvschp" th:text="${kGEntity.schoolHistory}">
+                        </p>
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>学校设施</h3> <!-- School facilities -->
+                        </div>
+                        <div class="pvsch" >
+                           <h2 th:text="${kGEntity.schoolFacilitiesTitle}"></h2>
+                        </div>
+                        <p class="pvschp" th:text="${kGEntity.schoolFacilities}"> </p>
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>教學情況</h3><!--  Teaching situation -->
+                        </div>
+                        <div class="pvsch">
+                           <h2 th:text="${kGEntity.teachingSituationTitle}"></h2>
+                        </div>
+                        <p class="pvschp"  th:text="${kGEntity.teachingSituation}"></p>
+                     </div>
+                     <div class="row" style="padding:0 15px;">
+                        <div class="infotable">
+                           <table class="table table-bordered">
+                              <thead style="background-color: #66b2ff;color: white;">
+                                 <tr>
+                                    <th></th>
+                                    <th>苗圃</th><!-- Nursery  -->
+                                    <th>降低</th><!-- Lower -->
+                                    <th>上</th><!--Upper  -->
+                                    <th>总</th><!-- Total -->
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <th scope="row">AM会议</th><!-- AM Session -->
+                                    <td th:text="${kGEntity.nurseryAMSession}"></td> 
+                                    <td th:text="${kGEntity.lowerKGAMSession}"></td>
+                                    <td th:text="${kGEntity.upperKGAMSession}"></td>
+                                    <td th:text="${kGEntity.totalAMSession}"></td>
+                                 </tr>
+                                 <tr>
+                                    <th scope="row">PM会议</th><!-- PM Session -->
+                                   	<td th:text="${kGEntity.nurseryPMSession}"></td> 
+                                    <td th:text="${kGEntity.lowerKGPMSession}"></td>
+                                    <td th:text="${kGEntity.upperKGPMSession}"></td>
+                                    <td th:text="${kGEntity.totalPMSession}"></td>
+                                 </tr>
+                                 <tr>
+                                   <th scope="row">WD会议</th><!-- WD Session -->
+                                    <td th:text="${kGEntity.nurseryWDSession}"></td> 
+                                    <td th:text="${kGEntity.lowerKGWDSession}"></td>
+                                    <td th:text="${kGEntity.upperKGWDSession}"></td>
+                                    <td th:text="${kGEntity.totalWDSession}"></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>学费</h3><!--School fees  -->
+                        </div>
+                        <div class="pvsch">
+                           <h2></h2>
+                        </div>
+                        <p class="pvschp">
+                        </p>
+                     </div>
+                     <div class="row" style="padding:0 15px;">
+                        <div class="infotable">
+                           <table class="table table-bordered">
+                              <thead style="background-color: #66b2ff;color: white;">
+                                 <tr>
+                                    <th></th>
+                                    <th>苗圃</th><!-- Nursery  -->
+                                    <th>降低</th><!-- Lower -->
+                                    <th>上</th><!--Upper  -->
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <th scope="row">AM会议</th><!-- AM Session -->
+                                    <td th:text="${kGEntity.nurseryAMSessionfees}"></td>
+                                    <td th:text="${kGEntity.lowerKGAMSessionfees}"></td>
+                                    <td th:text="${kGEntity.upperKGAMSessionfees}"></td>
+                                 </tr>
+                                 <tr>
+                                    <th scope="row">PM会议</th><!-- PM Session -->
+                                     <td th:text="${kGEntity.nurseryPMSessionfees}"></td>
+                                    <td th:text="${kGEntity.lowerKGPMSessionfees}"></td>
+                                    <td th:text="${kGEntity.upperKGPMSessionfees}"></td>
+                                 </tr>
+                                 <tr>
+                                    <th scope="row">WD会议</th><!-- WD Session -->
+                                     <td th:text="${kGEntity.nurseryWDSessionfees}"></td>
+                                    <td th:text="${kGEntity.lowerKGWDSessionfees}"></td>
+                                    <td th:text="${kGEntity.upperKGWDSessionfees}"></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-7">
+                           <div class="descrp">
+                               <h2 style="color:#428bca">聯繫信息</h2><!-- Contact information -->
+                              <h3 class="h3class" style="font-size:18px;" th:text="${kGEntity.schoolName}"></h3>
+                              <h3 class="h3class" style="font-size:18px; margin-top: -2px;" th:text="${kGEntity.district}"></h3>
+                              <div class="addInfo">
+                                 <table class="table">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                            <th>地址 :</th><!-- Address --> 
+                                          <td th:text="${kGEntity.address}"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>地圖:</th><!-- Map -->
+                                          <td><a href="#">點擊加載學校地圖</a> </td>
+                                       </tr>
+                                       <tr>
+                                          <th>聯繫電話: </th><!-- Tel -->
+                                          <td th:text="${kGEntity.tel}"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>傳真:</th><!-- Fax -->
+                                          <td th:text="${kGEntity.fax}"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>網址: </th><!-- Website -->
+                                          <td><a th:href="${kGEntity.schoolWebsite}" target="_blank" th:text="${kGEntity.schoolWebsite}"></a>
+                                          </td>
+                                       </tr>
+                                       <tr>
+                                          <th>校監: </th> <!-- Supervisor -->
+                                          <td th:text="${kGEntity.nameofSchoolSupervisor}"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>校長:</th><!-- Principal -->
+                                          <td th:text="${kGEntity.nameofSchoolPrincipal}"></td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-5 image-school" style="padding: 87px 21px;">
+                           <img th:with="url=${kGEntity.image !=null?kGEntity.image:'/images/bottom.png'}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
+                           <p style="text-align: center;font-size: 14px;" th:text="${kGEntity.schoolName}"></p>
+                        </div>
+                     </div>
+                  </section>
+			<!-- Search / End -->
+		</div>
+	</div>
+	<div class="fs-inner-container map-fixed" style="padding-top:0px !important;">
+	
+		<!-- Map -->
+		<div class="clearfix"></div>
+		<div id="map-container">
+		    <div id="map" data-map-zoom="9" data-map-scroll="true">
+		        <!-- map goes here -->
+		    </div>
+		</div>
+
+	</div>
+	
+	
+	</div>
+</div>
+<div>
+       <div class="col-md-12" style="margin-top:70px">	 
+          <div>	   
+	     <a href="#"><img src="../images/add1.jpg" class="img-responsive" alt="" style="margin: 0 auto;"></img></a>
+		 </div>
+	   </div>
+	   
+<!-- 	    <div class="addbanner2">		
+	    <a href="#"><img src="../images/addimg2.jpg" class="img-responsive" alt=""></img></a>   
+	   
+	   </div> -->
+	   </div>
+<section class="listings-container margin-top-30">
+
+			<!-- Pagination Container -->
+			<div class="row fs-listings">
+				<div class="col-md-12">
+
+					<!-- Pagination -->
+					<div class="clearfix"></div>
+					<div class="clearfix"></div>
+					<!-- Pagination / End -->
+					
+					<!-- Copyrights -->
+					<div class="copyrights margin-top-0">©2017 Myschool_Hk。版权所有</div>
+
+				</div>
+			</div>
+			<!-- Pagination Container / End -->
+		</section>
+
+<!-- Wrapper / End -->
+
+<!-- Scripts
+================================================== -->
+<script type="text/javascript" src="../scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../scripts/jpanelmenu.min.js"></script>
+<script type="text/javascript" src="../scripts/chosen.min.js"></script>
+<script type="text/javascript" src="../scripts/slick.min.js"></script>
+<script type="text/javascript" src="../scripts/rangeslider.min.js"></script>
+<script type="text/javascript" src="../scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="../scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="../scripts/counterup.min.js"></script>
+<script type="text/javascript" src="../scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="../scripts/custom.js"></script>
+
+<!-- Maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyD1RCTgKr9a9wx_0OWasJB5nbbk1ONgwjg&amp;sensor=false&amp;language=en"></script>
+<script type="text/javascript" src="../scripts/infobox.min.js"></script>
+<script type="text/javascript" src="../scripts/markerclusterer.js"></script>
+<script type="text/javascript" src="../scripts/maps.js"></script>
+<script th:inline="javascript">
+  //<![CDATA[
+    var kGEntity = /*[[${kGEntity}]]*/'kGEntity';
+    //]]>
+    //<![CDATA[
+    var pSEntity = "";
+    //]]>
+    //<![CDATA[
+    var sSEntity = "";
+    //]]>
+</script>
+
+</body>
+</html>
+
+
+

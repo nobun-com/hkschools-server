@@ -1,0 +1,147 @@
+/*style.css*/
+/* .gridStyle {
+    border: 1px solid rgb(212,212,212);
+    width: 1335px; 
+    height: 580px
+} */
+div.search-form {
+    margin-bottom: 12px;
+}
+
+div.form_post {
+    font-size: 100%;
+    padding: 12px;
+    clear: both;
+}
+div.form_post p {
+    font-size: 100%;
+}
+div.form_post label {
+    display: block;
+    font-size: 100%;
+}
+
+div.form_post label.label-left {
+    display: inline;
+    margin-right: 2px;
+    margin-left: 12px;
+}
+
+div.form_post label.label-right {
+    display: inline;
+    margin-left: 6px;
+}
+
+div.form_post label.field_lbl {
+    display: block;
+    font-size: 100%;
+}
+div.form_post label.error {
+    display: inline;
+    color: #660000;
+    margin: 6px !important;
+}
+div.form_post input.error {
+    background-color: #F6E7B2;
+}
+div td {
+    font-size: 100%;
+}
+div.form_post input.error {
+    margin: 0px !important;
+}
+div.form_post fieldset {
+    border: 1px solid #ccc;
+    margin: 12px 0px;
+    padding: 12px;
+}
+div.form_post legend {
+    padding: 2px 12px;
+    background-color: #C8BC9A;
+    margin-left: 12px;
+}
+div.form_post input{
+    font-size: 100%;
+    padding: 2px;
+}
+div.form_post input.text_input {
+    font-size: 100%;
+    padding: 2px;
+    width: 300px;
+}
+div.form_post textarea {
+    font-size: 100%;
+    padding: 2px;
+    width: 500px;
+    height: 200px;
+    margin: 12px 0;
+}
+
+div.form_post textarea.error {
+    background-color:#F6E7B2;
+}
+
+div.form_post input.readonly {
+    font-size: 100%;
+    padding: 2px;
+    border: 1px dashed #ccc;
+}
+div.form_post input#qty {
+    font-size: 100%;
+    padding: 2px;
+    width: 40px;
+}
+div.form_post input.short_input {
+    font-size: 100%;
+    padding: 2px;
+    width: 90px !important;
+}
+
+div.form_post input.form-textbox {
+    font-size: 100%;
+    padding: 2px;
+    width: 240px;
+}
+
+div.form_post input.long_input {
+    font-size: 100%;
+    padding: 2px;
+    width: 300px;
+}
+div.form_post select.long_input {
+    width: 300px;
+}
+div.form_post select .lined{
+    border: 1px solid #ccc;
+}
+
+div.form_post input.submit-button {
+    padding: 2px 6px;
+    margin: 12px 0;
+    background-color: #CCCCCC;
+}
+
+div.form_post input.yellow-submit-button {
+    padding: 2px 6px;
+    margin: 12px 0;
+    background-color: #F6C10B;
+}
+
+/* detail view css */
+
+div#view p {
+    font-size: 1em;
+    margin-bottom: .8em;
+}
+
+.gridStyle {
+    border: 1px solid rgb(212,212,212);
+    height: 600px;
+    /*max-height: 800px;*/
+    width: 750px;
+    margin: 1em;
+}
+
+div.ngCellText.colt1 {
+    width: 270px;
+}

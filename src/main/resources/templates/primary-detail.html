@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+
+<!-- Basic Page Needs
+================================================== -->
+<title>My schoolhk</title>
+<meta charset="utf-8"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="../css/bootstrap.css"></link>
+
+<link rel="stylesheet" href="../css/colors/main.css" id="colors"></link>
+<link rel="stylesheet" href="../css/style.css"></link>
+<!-- <link rel="stylesheet" type="text/css" href="../css/style1.css"></link> -->
+<link rel="stylesheet" href="../css/ng-grid.css"></link>
+<link rel="stylesheet" type="text/css" href="../css/ui-grid.css"></link>
+<!-- jQuery library -->
+<script  type="text/javascript" src="../scripts/updated/jquery.min.js"></script>
+<script src="../scripts/updated/angular.js"></script>
+    <script src="../scripts/updated/angular-touch.js"></script>
+    <script src="../scripts/updated/angular-animate.js"></script>
+    <script src="../scripts/updated/csv.js"></script>
+    <script src="../scripts/updated/pdfmake.js"></script>
+    <script src="../scripts/updated/vfs_fonts.js"></script>
+    <script src="../scripts/updated/lodash.min.js"></script>
+    <script src="../scripts/updated/jszip.min.js"></script>
+    <script src="../scripts/updated/excel-builder.dist.js"></script>
+    
+
+    <script src="../scripts/updated/ui-grid.js"></script>
+    
+    
+<script data-require="ng-grid@*" data-semver="2.0.9" src="../scripts/updated/ng-grid2.0.js"></script> 
+<script src="../scripts/updated/bootstrap.min.js"></script>
+ <script type="text/javascript" src="../js/main.js"></script>
+
+
+<!-- Latest compiled JavaScript -->
+ <script data-require="angular.js@1.2.x" src="../scripts/updated/angular1.js" data-semver="1.2.21"></script>
+<script data-require="ng-grid@*" data-semver="2.0.9" src="../scripts/updated/ng-grid2.0.js"></script>
+<link rel="stylesheet" type="text/css" href="../css/ui-grid1.css"></link> 
+ <script type="text/javascript" src="../js/main.js"></script>
+
+
+<!-- Scripts
+================================================== -->
+
+<style>
+#navigation.style-1 {
+    padding:0;
+    margin-left: 115px;       
+     background-color: #66b2ff;
+    float: right;
+    margin-right: 75px;
+}
+header.fullwidth .container {
+    width: 100%;  
+    padding: 0px 60px;
+}
+.active{
+    background: #1a8cff;   
+     }
+     #navigation.style-1 ul li {
+    margin: 0px;
+}
+.fs-inner-container.map-fixed {
+    height: 400px;
+     position: relative; 
+    top: 0;
+    padding-top: 0px !important;
+}
+.fs-inner-container {
+    width: 100%;
+    background-color: #fff;
+    z-index: 10;
+}
+.fs-inner-container.content {
+    width: 100%;
+    background-color: #f7f7f7;
+    z-index: 995;
+    box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.12);
+    position: relative;
+    padding-top: 0px;
+}
+@media (max-width:991px){
+.fs-inner-container.map-fixed {
+    margin-bottom: 65px;
+    height: 400px;
+    position: relative;
+    top: 0;
+    padding-top: 0px !important;
+}
+}
+</style>
+</head>
+
+
+<body ng-controller="primaryController">
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+<!-- Header Container
+================================================== -->
+<header id="header-container" class="fixed fullwidth" style="background-color:#14a661">
+
+	<!-- Header -->
+	<div id="header" class="not-sticky">
+		<div class="container">
+			
+			<!-- Left Side Content -->
+			<div class="left-side">
+				
+				<!-- Logo -->
+				<div id="logo">
+					<a href="home"><img src="../images/logo .svg" style="width: 60px;height: 60px;" alt=""></img>
+					<img src="../images/header.png"  alt=""></img></a>
+				</div>
+
+				<!-- Mobile Navigation -->
+				<div class="menu-responsive">
+					<i class="fa fa-reorder menu-trigger"></i>
+				</div>
+				</div>
+				<!-- Main Navigation -->
+					<div class="clearfix"></div>
+				<nav id="navigation" class="style-1">
+					<ul id="responsive">
+
+						<li><a href="/kindergarten-list">幼稚園</a>
+							
+						</li>
+
+						<li class="active"><a href="/primary-list">小學</a>
+							
+						</li>
+
+						<li><a href="/secondary-list">中學</a>
+							
+						</li>
+					</ul>
+				</nav>
+				<div class="clearfix"></div>
+				<!-- Main Navigation / End -->
+				
+			</div>
+	
+
+		</div>
+	
+	<!-- Header / End -->
+
+</header>
+<div class="clearfix"></div>
+<!-- Header Container / End -->
+
+
+<!-- Content
+================================================== -->
+<div class="fs-container">
+
+	<div class="fs-inner-container content">
+		<div class="fs-content">
+
+			<!-- Search -->
+		<!-- Search -->
+			   <section class="search">
+                     <div class="row">
+                        <div >
+                           <h1 class="page-heading" style="color:#66b2ff" th:text="${pSEntity.district}"></h1>
+                        </div>
+                        <div style="margin-bottom: 20px;">
+                           <img src="../images/add1.jpg" alt="add1" class="img-responsive" style="margin: 0 auto;"></img>
+                        </div>
+                        <div class="col-md-7">
+                           <div class="descrp">
+                              <h2 style="color: #428bca;" th:text="${pSEntity.schoolName}"></h2>
+                              <h3 class="h3class" style="color: #428bca;" th:text="${pSEntity.schoolName}"></h3>
+                              <p th:text="${pSEntity.schoolDiscritpion}"></p>
+                           </div>
+                        </div>
+                         <div class="col-md-5 image-school">
+                           <img th:with="url=${pSEntity.imageTop !=null?pSEntity.imageTop:'/images/top.png'}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
+                           <p style="text-align: center;font-size: 14px;" th:text="${pSEntity.schoolName}"></p>
+                        </div> 
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>學校類別</h3><!-- School category -->
+                        </div>
+                     <div class="pvsch">
+                           <h2 th:text="${pSEntity.schoolCategouryTitle}"></h2>
+                        </div>
+                        <p th:text="${pSEntity.schoolCategory}"></p>
+                     </div> 
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>學校歷史</h3><!--  School history -->
+                        </div>
+                        <div class="pvsch">
+                           <h2 th:text="${pSEntity.schoolHistory}"></h2>
+                        </div>
+                        <p class="pvsch" th:text="${pSEntity.schoolHistoryTitle}"></p>
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                            <h3>學校設施</h3> <!-- School facilities -->
+                        </div>
+                        <div class="pvsch">
+                           <h2 th:text="${pSEntity.schoolHistoryTitle}"></h2>
+                        </div>
+                        <p class="pvsch" th:text="${pSEntity.schoolHistory}">
+                        </p>
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                          <h3>教學情況</h3><!--  Teaching situation -->
+                        </div>
+                        <div class="pvsch">
+                           <h2 th:text="${pSEntity.teachingSituationTitle}"></h2>
+                        </div>
+                        <p class="pvsch" th:text="${pSEntity.teachingSituation}"></p>
+                     </div>
+                     <div class="row" style="padding:0 15px;">
+                        <div class="infotable">
+                           <table class="table table-bordered">
+                              <thead style="background-color: #66b2ff; color: white;">
+                                 <tr>
+                                    <th rowspan="2" style="position: relative;top: -30px;">学年</th><!-- School year -->
+                                    <th colspan="2">教师人数</th> <!-- Number of teaching staff -->
+                                    <th colspan="7">班级结构</th> <!-- Class structure -->
+                                 </tr>
+                                  <tr>
+                                    <th>学校教师</th><!-- School teachers -->
+                                    <th>审批准备</th><!-- Approval preparation  -->
+                                    <th>总</th><!-- total -->
+                                    <th>一</th><!-- One -->
+                                    <th>成两半</th><!-- In TWo -->
+                                    <th>三</th><!-- Three -->
+                                     <th>在四</th><!-- In Four -->
+                                    <th>在五</th><!-- In Five -->
+                                     <th>中六</th><!-- Middle Six -->
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <th scope="row">2013</th>
+                                    <td th:text="${pSEntity.schoolTeachers2013}"></td>
+                                    <td th:text="${pSEntity.approvalPreparation2013}"></td>
+                                    <td th:text="${pSEntity.total2013}"></td>
+                                    <td th:text="${pSEntity.smallOne2013}"></td>
+                                    <td th:text="${pSEntity.smallTwo2013}"></td>
+                                    <td th:text="${pSEntity.smallThree2013}"></td>
+                                    <td th:text="${pSEntity.smallFour2013}"></td>
+                                    <td th:text="${pSEntity.smallFive2013}"></td>
+                                    <td th:text="${pSEntity.littleSix2013}"></td>
+                                 </tr>
+                                 <tr>
+                                   <th scope="row">2014</th>
+                                    <td th:text="${pSEntity.schoolTeachers2014}"></td>
+                                    <td th:text="${pSEntity.approvalPreparation2014}"></td>
+                                    <td th:text="${pSEntity.total2014}"></td>
+                                    <td th:text="${pSEntity.smallOne2014}"></td>
+                                    <td th:text="${pSEntity.smallTwo2014}"></td>
+                                    <td th:text="${pSEntity.smallThree2014}"></td>
+                                    <td th:text="${pSEntity.smallFour2014}"></td>
+                                    <td th:text="${pSEntity.smallfive2014}"></td>
+                                    <td th:text="${pSEntity.littlesix2014}"></td>
+                                 </tr>
+                                 <tr>
+                                   <th scope="row">2015</th>
+                                    <td th:text="${pSEntity.schoolTeachers2015}"></td>
+                                    <td th:text="${pSEntity.approvalPreparation2015}"></td>
+                                    <td th:text="${pSEntity.total2015}"></td>
+                                    <td th:text="${pSEntity.smallOne2015}"></td>
+                                    <td th:text="${pSEntity.smallTwo2015}"></td>
+                                    <td th:text="${pSEntity.smallThree2015}"></td>
+                                    <td th:text="${pSEntity.smallFour2015}"></td>
+                                    <td th:text="${pSEntity.smallfive2015}"></td>
+                                    <td th:text="${pSEntity.littlesix2015}"></td>
+                                 </tr>
+                                 <tr>
+                                   <th scope="row">2016</th>
+                                    <td th:text="${pSEntity.schoolTeachers2016}"></td>
+                                    <td th:text="${pSEntity.approvalPreparation2016}"></td>
+                                    <td th:text="${pSEntity.total2016}"></td>
+                                    <td th:text="${pSEntity.smallOne2016}"></td>
+                                    <td th:text="${pSEntity.smallTwo2016}"></td>
+                                    <td th:text="${pSEntity.smallThree2016}"></td>
+                                    <td th:text="${pSEntity.smallFour2016}"></td>
+                                    <td th:text="${pSEntity.smallfive2016}"></td>
+                                    <td th:text="${pSEntity.littlesix2016}"></td>
+                                 </tr>
+                                 <tr>
+                                  <th scope="row">2017</th>
+                                    <td th:text="${pSEntity.schoolTeachers2017}"></td>
+                                    <td th:text="${pSEntity.approvalPreparation2017}"></td>
+                                    <td th:text="${pSEntity.total2017}"></td>
+                                    <td th:text="${pSEntity.smallOne2017}"></td>
+                                    <td th:text="${pSEntity.smallTwo2017}"></td>
+                                    <td th:text="${pSEntity.smallThree2017}"></td>
+                                    <td th:text="${pSEntity.smallFour2017}"></td>
+                                    <td th:text="${pSEntity.smallfive2017}"></td>
+                                    <td th:text="${pSEntity.littlesix2017}"></td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="item-title">
+                            <h3>學費</h3><!--School fees  -->
+                        </div>
+                        <div class="pvsch">
+                           <h2></h2>
+                        </div>
+                        <p class="pvschp">
+                        </p>
+                     </div>
+                     <!-- <div class="row" style="padding:0 15px;">
+                        <div class="infotable">
+                           <table class="table table-bordered">
+                              <thead style="background-color: #66b2ff; color: white;">
+                                 <tr>
+                                    <th>申请学年</th>Apply for school year
+                                    <th>小学的地方</th>Primary school places
+                                    <th>指定你自己的学校的地方</th>Assign your own school places
+                                    <th>已经记录和保留的地方</th>Already recorded and reserved places
+                                    <th>暂时重新分配地点</th>Tentative reallocation of places
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr>
+                                    <th scope="row">2012</th>
+                                    <td>90</td>
+                                    <td>45</td>
+                                    <td>56</td>
+                                    <td>34</td>
+                                    
+                                 </tr>
+                                 <tr>
+                                   <th scope="row">2013</th>
+                                    <td>90</td>
+                                    <td>45</td>
+                                    <td>56</td>
+                                    <td>34</td>
+                                     
+                                 </tr>
+                                 <tr>
+                                   <th scope="row">2014</th>
+                                    <td>90</td>
+                                    <td>45</td>
+                                    <td>56</td>
+                                    <td>34</td>
+                                 </tr>
+                                     <tr>
+                                    <th scope="row">2015</th>
+                                    <td>90</td>
+                                    <td>45</td>
+                                    <td>56</td>
+                                    <td>34</td>
+                                    
+                                 </tr>
+                                     <tr>
+                                    <th scope="row">2016</th>
+                                    <td>90</td>
+                                    <td>45</td>
+                                    <td>56</td>
+                                    <td>34</td>
+                                    
+                                 </tr>
+                                     <tr>
+                                   <th scope="row">2017</th>
+                                    <td>90</td>
+                                    <td>45</td>
+                                    <td>56</td>
+                                    <td>34</td>
+                                    
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div> -->
+                     <div class="row">
+                        <div class="col-md-7">
+                           <div class="descrp">
+                               <h2 style="color:#428bca">聯繫信息</h2><!-- Contact information -->
+                              <h3 class="h3class" style="font-size:18px;" th:text="${pSEntity.schoolName}"></h3>
+                              <h3 class="h3class" style="font-size:18px; margin-top: -2px;" th:text="${pSEntity.district}"></h3>
+                              <div class="addInfo">
+                                 <table class="table">
+                                    <thead>
+                                    </thead>
+                                    <tbody>
+                                       <tr>
+                                          <th>地址 :</th><!-- Address -->
+                                           <td th:text="${pSEntity.address}"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>地图 :</th><!-- Map -->
+                                          <td><a href="#">点击加载学校地图</a> </td>
+                                       </tr>
+                                       <tr>
+                                          <th>电话 :</th><!-- Phone -->
+                                           <td th:text="${pSEntity.tel}"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>傳真:</th><!-- Fax -->
+                                          <td th:text="${pSEntity.fax}"></td>
+                                       </tr>
+                                        <tr>
+                                          <th>电子邮件 :</th> <!-- Email -->
+                                          <td th:text="${pSEntity.schoolEmail}"></td>
+                                       </tr>
+                                       <tr>
+                                         <th>网站 : </th><!-- Website -->
+                                          <td><a th:href="${pSEntity.schoolWebsite}" target="_blank" th:text="${pSEntity.schoolWebsite}"></a></td>
+                                       </tr>
+                                       <tr>
+                                          <th>校長:</th><!-- Principal -->
+                                            <td th:text="${pSEntity.nameofSchoolPrincipal}"></td>
+                                       </tr>
+                                       <tr>
+                                          <th>所长 : </th> <!-- Superintendent -->
+                                           <td th:text="${pSEntity.supervisorChairmanofManagementCommittee}"></td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-5 image-school" style="padding: 87px 21px;">
+                           <img th:with="url=${pSEntity.image !=null?pSEntity.image:'/images/bottom.png'}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
+                           <p style="text-align: center;font-size: 14px;" th:text="${pSEntity.schoolName}"></p>
+                        </div>
+                     </div>
+	                 </section>
+			<!-- Search / End -->
+		</div>
+	</div>
+	<div class="fs-inner-container map-fixed" style="padding-top:0px !important;">
+	
+		<!-- Map -->
+		<div class="clearfix"></div>
+		<div id="map-container">
+		    <div id="map" data-map-zoom="9" data-map-scroll="true">
+		        <!-- map goes here -->
+		    </div>
+		</div>
+
+	</div>
+	
+	
+	</div>
+</div>
+<div>
+       <div class="col-md-12" style="margin-top:70px">	 
+          <div>	   
+	     <a href="#"><img src="../images/add1.jpg" class="img-responsive" alt="" style="margin: 0 auto;"></img></a>
+		 </div>
+	   </div>
+	   
+<!-- 	    <div class="addbanner2">		
+	    <a href="#"><img src="../images/addimg2.jpg" class="img-responsive" alt=""></img></a>   
+	   
+	   </div> -->
+	   </div>
+<section class="listings-container margin-top-30">
+
+			<!-- Pagination Container -->
+			<div class="row fs-listings">
+				<div class="col-md-12">
+
+					<!-- Pagination -->
+					<div class="clearfix"></div>
+					<div class="clearfix"></div>
+					<!-- Pagination / End -->
+					
+					<!-- Copyrights -->
+					<div class="copyrights margin-top-0">©2017 Myschool_Hk。版權所有</div>
+
+				</div>
+			</div>
+			<!-- Pagination Container / End -->
+		</section>
+
+<!-- Wrapper / End -->
+
+<!-- Scripts
+================================================== -->
+<script type="text/javascript" src="../scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript" src="../scripts/jpanelmenu.min.js"></script>
+<script type="text/javascript" src="../scripts/chosen.min.js"></script>
+<script type="text/javascript" src="../scripts/slick.min.js"></script>
+<script type="text/javascript" src="../scripts/rangeslider.min.js"></script>
+<script type="text/javascript" src="../scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="../scripts/waypoints.min.js"></script>
+<script type="text/javascript" src="../scripts/counterup.min.js"></script>
+<script type="text/javascript" src="../scripts/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="../scripts/custom.js"></script>
+
+<!-- Maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyD1RCTgKr9a9wx_0OWasJB5nbbk1ONgwjg&amp;sensor=false&amp;language=en"></script>
+<script type="text/javascript" src="../scripts/infobox.min.js"></script>
+<script type="text/javascript" src="../scripts/markerclusterer.js"></script>
+<script type="text/javascript" src="../scripts/maps.js"></script>
+<script th:inline="javascript">
+  //<![CDATA[
+    var pSEntity = /*[[${pSEntity}]]*/'pSEntity';
+    //]]>
+    //<![CDATA[
+    var sSEntity = "";
+    //]]>
+    //<![CDATA[
+    var kGEntity = "";
+    //]]>
+</script>
+
+</body>
+</html>
+
+
+
