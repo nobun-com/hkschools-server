@@ -203,14 +203,14 @@ header.fullwidth .container {
                            <h3>學校歷史</h3><!--  School history -->
                         </div>
                         <div class="pvsch">
-                           <h2 th:text="${'成立于 ' + kGEntity.schoolFoundingyear}"></h2>
+                           <h2 th:text="${'成立於 ' + kGEntity.schoolFoundingyear}"></h2>
                         </div>
                         <p class="pvschp" th:text="${kGEntity.schoolHistory}">
                         </p>
                      </div>
                      <div class="row">
                         <div class="item-title">
-                           <h3>学校设施</h3> <!-- School facilities -->
+                           <h3>學校設施</h3> <!-- School facilities -->
                         </div>
                         <div class="pvsch" >
                            <h2 th:text="${kGEntity.schoolFacilitiesTitle}"></h2>
@@ -232,29 +232,29 @@ header.fullwidth .container {
                               <thead style="background-color: #66b2ff;color: white;">
                                  <tr>
                                     <th></th>
-                                    <th>苗圃</th><!-- Nursery  -->
-                                    <th>降低</th><!-- Lower -->
-                                    <th>上</th><!--Upper  -->
-                                    <th>总</th><!-- Total -->
+                                    <th>幼兒 3-4 歲</th><!-- Nursery  -->
+                                    <th>低班 4-5 歲</th><!-- Lower -->
+                                    <th>高班 5-6 歲</th><!--Upper  -->
+                                    <th>總數</th><!-- Total -->
                                  </tr>
                               </thead>
                               <tbody>
                                  <tr>
-                                    <th scope="row">AM会议</th><!-- AM Session -->
+                                    <th scope="row">上午班</th><!-- AM Session -->
                                     <td th:text="${kGEntity.nurseryAMSession}"></td> 
                                     <td th:text="${kGEntity.lowerKGAMSession}"></td>
                                     <td th:text="${kGEntity.upperKGAMSession}"></td>
                                     <td th:text="${kGEntity.totalAMSession}"></td>
                                  </tr>
                                  <tr>
-                                    <th scope="row">PM会议</th><!-- PM Session -->
+                                    <th scope="row">下午班</th><!-- PM Session -->
                                    	<td th:text="${kGEntity.nurseryPMSession}"></td> 
                                     <td th:text="${kGEntity.lowerKGPMSession}"></td>
                                     <td th:text="${kGEntity.upperKGPMSession}"></td>
                                     <td th:text="${kGEntity.totalPMSession}"></td>
                                  </tr>
                                  <tr>
-                                   <th scope="row">WD会议</th><!-- WD Session -->
+                                   <th scope="row">全日班</th><!-- WD Session -->
                                     <td th:text="${kGEntity.nurseryWDSession}"></td> 
                                     <td th:text="${kGEntity.lowerKGWDSession}"></td>
                                     <td th:text="${kGEntity.upperKGWDSession}"></td>
@@ -266,7 +266,7 @@ header.fullwidth .container {
                      </div>
                      <div class="row">
                         <div class="item-title">
-                           <h3>学费</h3><!--School fees  -->
+                           <h3>學校收費</h3><!--School fees  -->
                         </div>
                         <div class="pvsch">
                            <h2></h2>
@@ -280,26 +280,26 @@ header.fullwidth .container {
                               <thead style="background-color: #66b2ff;color: white;">
                                  <tr>
                                     <th></th>
-                                    <th>苗圃</th><!-- Nursery  -->
-                                    <th>降低</th><!-- Lower -->
-                                    <th>上</th><!--Upper  -->
+                                    <th>幼兒 3-4 歲</th><!-- Nursery  -->
+                                    <th>低班 4-5 歲</th><!-- Lower -->
+                                    <th>高班 5-6 歲</th><!--Upper  -->
                                  </tr>
                               </thead>
                               <tbody>
                                  <tr>
-                                    <th scope="row">AM会议</th><!-- AM Session -->
+                                    <th scope="row">上午班</th><!-- AM Session -->
                                     <td th:text="${kGEntity.nurseryAMSessionfees}"></td>
                                     <td th:text="${kGEntity.lowerKGAMSessionfees}"></td>
                                     <td th:text="${kGEntity.upperKGAMSessionfees}"></td>
                                  </tr>
                                  <tr>
-                                    <th scope="row">PM会议</th><!-- PM Session -->
+                                    <th scope="row">下午班</th><!-- PM Session -->
                                      <td th:text="${kGEntity.nurseryPMSessionfees}"></td>
                                     <td th:text="${kGEntity.lowerKGPMSessionfees}"></td>
                                     <td th:text="${kGEntity.upperKGPMSessionfees}"></td>
                                  </tr>
                                  <tr>
-                                    <th scope="row">WD会议</th><!-- WD Session -->
+                                    <th scope="row">全日班</th><!-- WD Session -->
                                      <td th:text="${kGEntity.nurseryWDSessionfees}"></td>
                                     <td th:text="${kGEntity.lowerKGWDSessionfees}"></td>
                                     <td th:text="${kGEntity.upperKGWDSessionfees}"></td>
@@ -311,7 +311,7 @@ header.fullwidth .container {
                      <div class="row">
                         <div class="col-md-7">
                            <div class="descrp">
-                               <h2 style="color:#428bca">聯繫信息</h2><!-- Contact information -->
+                               <h2 style="color:#428bca">聯絡資料</h2><!-- Contact information -->
                               <h3 class="h3class" style="font-size:18px;" th:text="${kGEntity.schoolName}"></h3>
                               <h3 class="h3class" style="font-size:18px; margin-top: -2px;" th:text="${kGEntity.district}"></h3>
                               <div class="addInfo">
