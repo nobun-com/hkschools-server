@@ -184,7 +184,7 @@ header.fullwidth .container {
                            </div>
                         </div>
                         <div class="col-md-5 image-school">
-                           <img th:with="url=${kGEntity.imageTop !=null?kGEntity.imageTop:'../images/top.png'}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
+                           <img th:if = "${kGEntity.imageTop !=null}" th:with="url=${kGEntity.imageTop}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
                            <p style="text-align: center;font-size: 14px;" th:text="${kGEntity.schoolName}"></p>
                         </div> 
                      </div>
@@ -354,7 +354,7 @@ header.fullwidth .container {
                            </div>
                         </div>
                         <div class="col-md-5 image-school" style="padding: 87px 21px;">
-                           <img th:with="url=${kGEntity.image !=null?kGEntity.image:'/images/bottom.png'}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
+                           <img th:if ="${kGEntity.image !=null}" th:with="url=${kGEntity.image}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
                            <p style="text-align: center;font-size: 14px;" th:text="${kGEntity.schoolName}"></p>
                         </div>
                      </div>

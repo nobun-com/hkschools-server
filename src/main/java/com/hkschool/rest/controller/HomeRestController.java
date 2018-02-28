@@ -5,6 +5,7 @@
 package com.hkschool.rest.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,17 +36,22 @@ public class HomeRestController extends BaseController {
 
 	@Resource
 	private PrimarySchoolService primaryService;
+
 	
+
+
 
 	@RequestMapping(value = "/getAllKinderGarten", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<KGEntity> findAll(HttpServletRequest req) {
+	public Map<String, List<KGEntity>> findAll(HttpServletRequest req) {
 		String schoolCategoury = req.getParameter("schoolCategoury");
 		String schoolDistrict = req.getParameter("schoolDistrict");
 		String withchildcareservicesforchildrenagedunder2 = req.getParameter("withchildcareservicesforchildrenagedunder2");
 		String time = req.getParameter("time");
-		return kinderGartenService.findAll(schoolCategoury, schoolDistrict,withchildcareservicesforchildrenagedunder2,time);
+		Map<String, List<KGEntity>> data = new HashMap<String, List<KGEntity>>();
+		data.put("data", kinderGartenService.findAll(schoolCategoury, schoolDistrict,withchildcareservicesforchildrenagedunder2,time));
+		return data;
 	}
 
 	@RequestMapping(value = "/getKGFilters", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -72,13 +78,16 @@ public class HomeRestController extends BaseController {
 	@RequestMapping(value = "/getAllPrimarySchool", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<PSEntity> findAllPrimary(HttpServletRequest req) {
+	public Map<String, List<PSEntity>> findAllPrimary(HttpServletRequest req) {
 		String schoolCategory = req.getParameter("schoolCategory");
 		String schoolDistrict = req.getParameter("schoolDistrict");
 		String religion = req.getParameter("religion");
 		String studentGender = req.getParameter("studentGender");
 		String schoolId =req.getParameter("schoolId");
-		return primaryService.findAllPrimary(schoolCategory,schoolDistrict,religion,studentGender,schoolId);
+		Map<String, List<PSEntity>> data = new HashMap<String, List<PSEntity>>();
+		data.put("data", primaryService.findAllPrimary(schoolCategory,schoolDistrict,religion,studentGender,schoolId));
+		return data;
+
 	}
 	
 	@Resource
@@ -99,16 +108,22 @@ public class HomeRestController extends BaseController {
 		return secondaryservice.initFilter();
 	}
 	
+	
+
+	
+	
 	@RequestMapping(value = "/getAllSecondarySchool", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public List<SSEntity> findAllSecondary(HttpServletRequest req) {
+	public Map<String, List<SSEntity>> findAllSecondary(HttpServletRequest req) {
 		String schoolCategory = req.getParameter("schoolCategory");
 		String schoolDistrict = req.getParameter("schoolDistrict");
 		String religion = req.getParameter("religion");
 		String studentGender = req.getParameter("studentGender");
 		String sponsoringBody =req.getParameter("sponsoringBody");
-		return secondaryservice.findAllSecondary(schoolCategory,schoolDistrict,religion,studentGender,sponsoringBody);
+		Map<String, List<SSEntity>> data = new HashMap<String, List<SSEntity>>();
+		data.put("data",secondaryservice.findAllSecondary(schoolCategory,schoolDistrict,religion,studentGender,sponsoringBody));
+		return data;
 	}
 	
 	@RequestMapping(value = "/getAllKinderGartenMapData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)

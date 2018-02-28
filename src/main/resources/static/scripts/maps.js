@@ -1,3 +1,4 @@
+
 // Default infoBox Rating Type
 var infoBox_ratingType = 'star-rating';
 
@@ -94,7 +95,7 @@ var infoBox_ratingType = 'star-rating';
           var zoomLevel = parseInt(mapZoomAttr);
     	 
       } else {
-          var zoomLevel = 7;
+          var zoomLevel = 5;
       }
 
       if (typeof mapScrollAttr !== typeof undefined && mapScrollAttr !== false) {
