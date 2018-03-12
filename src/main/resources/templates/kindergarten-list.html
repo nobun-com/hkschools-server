@@ -287,7 +287,7 @@ header.fullwidth .container {
 								<p>香港現時大約有接近一千間幼稚園及幼兒學校，我們根據他們的所在地區、學校類別（非牟利／私立）、免費幼稚園計劃（✓ 代表獲准參加）、提供兩歲幼兒服務（✓ 代表有）、辦學規模（根據已使用課室的總容額）、以及上課時間（AM,PM,WD），整理了以下目錄，方便你查閱和多方面了解幼校的分佈。請使用提供的篩選名單功能，點擊連結，會加載學校的詳細資訊網頁</p>
 							</div>
 
-							<div class="row">
+							<div class="school-list-table table-responsive">
 								<table id="example" class="display responsive nowrap"
 									cellspacing="0" width="100%">
 									<thead>
@@ -399,7 +399,29 @@ header.fullwidth .container {
 	
 	<script type="text/javascript" language="javascript" src="https://cdn.datatables.net/responsive/2.2.1/js/dataTables.responsive.min.js"></script>
 
-</body>
+</body><!-- Back To Top Button -->
+<a href="#" class="scrollToTop"><img src="../images/gototop.png" style="width:40px"></img></a>
+<script>
+$(document).ready(function(){
+	
+	//Check to see if the window is top if not then display button
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});
+	
+	//Click event to scroll to top
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0},800);
+		return false;
+	});
+	
+})
+</script>
+
 </html>
 
 

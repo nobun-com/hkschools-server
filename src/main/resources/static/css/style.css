@@ -12316,7 +12316,7 @@ body{
     border: 2px solid #dddddd;
 }
 .infotable table,th,td{
-    text-align: center;
+    text-align: left;
 }
 
 .addInfo .table th ,.addInfo .table td{
@@ -12363,8 +12363,38 @@ body{
 .text-h2{
 	color: #428bca;margin-top: 56px;
 }
+
 @media screen and (max-width: 1350px) and (min-width: 1092px) {
 	
-	
-	
+}
+
+
+@media (max-width: 767px){
+	.table-responsive {
+	    width: 100%;
+	    margin-bottom: 15px;
+	    overflow-x: scroll;
+	    overflow-y: hidden;
+	    border: 0px solid #dddddd !important;
+	    -ms-overflow-style: -ms-autohiding-scrollbar;
+	    -webkit-overflow-scrolling: touch;
 	}
+}
+
+.scrollToTop{
+	width:100px; 
+	height:130px;
+	padding:10px; 
+	text-align:center; 	
+	font-weight: bold;
+	color: #444;
+	text-decoration: none;
+	position:fixed;
+	right:0px;
+	bottom:-54px;
+	display:none;
+	z-index: 999;
+}
+.scrollToTop:hover{
+	text-decoration:none;
+}
