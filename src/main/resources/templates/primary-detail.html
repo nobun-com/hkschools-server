@@ -49,6 +49,9 @@
 ================================================== -->
 
 <style>
+td, th {
+    text-align: center;
+}
 #navigation.style-1 {
     padding:0;
     margin-left: 115px;       
@@ -229,20 +232,20 @@ header.fullwidth .container {
                            <table class="table table-bordered">
                               <thead style="background-color: #66b2ff; color: white;">
                                  <tr>
-                                    <th rowspan="2" style="position: relative;top: -30px;">学年</th><!-- School year -->
-                                    <th colspan="2">教师人数</th> <!-- Number of teaching staff -->
-                                    <th colspan="7">班级结构</th> <!-- Class structure -->
+                                    <th rowspan="2" style="position: relative;top: -30px;">學年</th><!-- School year -->
+                                    <th colspan="2">教學人員人數</th> <!-- Number of teaching staff -->
+                                    <th colspan="7">班級結構</th> <!-- Class structure -->
                                  </tr>
                                   <tr>
-                                    <th>学校教师</th><!-- School teachers -->
-                                    <th>审批准备</th><!-- Approval preparation  -->
-                                    <th>总</th><!-- total -->
-                                    <th>一</th><!-- One -->
-                                    <th>成两半</th><!-- In TWo -->
-                                    <th>三</th><!-- Three -->
-                                     <th>在四</th><!-- In Four -->
-                                    <th>在五</th><!-- In Five -->
-                                     <th>中六</th><!-- Middle Six -->
+                                    <th>全校教師</th><!-- School teachers -->
+                                    <th>核准編制</th><!-- Approval preparation  -->
+                                    <th>總數</th><!-- total -->
+                                    <th>小一</th><!-- One -->
+                                    <th>小二</th><!-- In TWo -->
+                                    <th>小三</th><!-- Three -->
+                                     <th>小四</th><!-- In Four -->
+                                    <th>小五</th><!-- In Five -->
+                                     <th>小六</th><!-- Middle Six -->
                                  </tr>
                               </thead>
                               <tbody>
@@ -404,7 +407,7 @@ header.fullwidth .container {
                                           <td><a href="#">点击加载学校地图</a> </td>
                                        </tr>
                                        <tr>
-                                          <th>电话 :</th><!-- Phone -->
+                                          <th>電話 :</th><!-- Phone -->
                                            <td th:text="${pSEntity.tel}"></td>
                                        </tr>
                                        <tr>
@@ -412,19 +415,19 @@ header.fullwidth .container {
                                           <td th:text="${pSEntity.fax}"></td>
                                        </tr>
                                         <tr>
-                                          <th>电子邮件 :</th> <!-- Email -->
+                                          <th>電郵 :</th> <!-- Email -->
                                           <td th:text="${pSEntity.schoolEmail}"></td>
                                        </tr>
                                        <tr>
-                                         <th>网站 : </th><!-- Website -->
+                                         <th>網址 : </th><!-- Website -->
                                           <td><a th:href="${pSEntity.schoolWebsite}" target="_blank" th:text="${pSEntity.schoolWebsite}"></a></td>
                                        </tr>
                                        <tr>
-                                          <th>校長:</th><!-- Principal -->
+                                          <th>校長 :</th><!-- Principal -->
                                             <td th:text="${pSEntity.nameofSchoolPrincipal}"></td>
                                        </tr>
                                        <tr>
-                                          <th>所长 : </th> <!-- Superintendent -->
+                                          <th>校監／校管會主席 : </th> <!-- Superintendent -->
                                            <td th:text="${pSEntity.supervisorChairmanofManagementCommittee}"></td>
                                        </tr>
                                     </tbody>

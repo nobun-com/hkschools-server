@@ -285,24 +285,22 @@ header.fullwidth .container {
 						<table id="example" class="display responsive nowrap" cellspacing="0" width="100%">
 									<thead>
 										<tr>
-											<th>幼校名稱</th>
-											<th>地址</th>
-											<th>類別</th>
+											<th>小學名稱</th>
+											<th>種類</th>
 											<th>宗教</th>
 											<th>地區</th>
-											<th>学校编号</th>
-											<th>学生性别</th>
+											<th>校網</th>
+											<th>性別</th>
 										</tr>
 									</thead>
 									<tfoot>
 										<tr>
-											<th>幼校名稱</th>
-											<th>地址</th>
-											<th>類別</th>
+											<th>小學名稱</th>
+											<th>種類</th>
 											<th>宗教</th>
 											<th>地區</th>
-											<th>学校编号</th>
-											<th>学生性别</th>
+											<th>校網</th>
+											<th>性別</th>
 										</tr>
 									</tfoot>
 								</table>
@@ -315,37 +313,37 @@ header.fullwidth .container {
 			<div class="schoolft">
 						 <div class="col-sm-2">
 							<select ng-model="schoolCategory" ng-change="filterPrimaryData()" class="form-control" >
-								<option selected="true" value="all" >類別</option>
+								<option selected="true" value="all" >種類</option>
 								<option ng-repeat="category in primaryFilterData.schoolCategory" value="{{category}}">{{category}}</option>
 							</select>
 						</div> 
-						 <div class="col-sm-2">
+						<div class="col-sm-2" >
+							<select ng-model="religion" ng-change="filterPrimaryData()" class="form-control">
+								<option selected="true" value="all" >宗教</option>
+								<option ng-repeat="religion1 in primaryFilterData.religion" value="{{religion1}}">{{religion1}}</option>
+								
+							</select>
+						</div>
+						<div class="col-sm-2">
 							<select ng-model="schoolDistrict" ng-change="filterPrimaryData()" class="form-control">
 								<option selected="true" value="all" >地區</option>
 								<option ng-repeat="district in primaryFilterData.schoolDistricts" value="{{district}}">{{district}}</option>
 							</select>
 						</div>
-						<div class="col-sm-2" >
-							<select ng-model="religion" ng-change="filterPrimaryData()" class="form-control">
-								<option selected="true" value="all" >按宗教选择</option>
-								<option ng-repeat="religion1 in primaryFilterData.religion" value="{{religion1}}">{{religion1}}</option>
-								
-							</select>
-						</div>
-						 <div class="col-sm-2">
-							<select ng-model="studentGender" ng-change="filterPrimaryData()" class="form-control">
-								<option selected="true" value="all" >选择按学生性别</option>
-								<option ng-repeat="gender in primaryFilterData.studentGender" value="{{gender}}">{{gender}}</option>
-								
-							</select>
-						</div>
-						 <div class="col-sm-2">
+						<div class="col-sm-2">
 							<select ng-model="schoolId" ng-change="filterPrimaryData()" class="form-control">
-								<option selected="true" value="all" >按学校编号选择</option>
+								<option selected="true" value="all" >校網</option>
 								<option ng-repeat="id in primaryFilterData.schoolId" value="{{id}}">{{id}}</option>
 								
 							</select>
 						</div>  
+						<div class="col-sm-2">
+							<select ng-model="studentGender" ng-change="filterPrimaryData()" class="form-control">
+								<option selected="true" value="all" >性別</option>
+								<option ng-repeat="gender in primaryFilterData.studentGender" value="{{gender}}">{{gender}}</option>
+								
+							</select>
+						</div>
 
 					</div>
 						<div class="row district-data">
@@ -378,7 +376,7 @@ header.fullwidth .container {
 		</div>
 	</div>
 	<div class="fs-inner-container map-fixed">
-	<div class="outer-div">
+	<!-- <div class="outer-div">
        <div class="addbanner1">	 
           <div>	   
 	     <a href="#"><img src="../images/addimg2.jpg" class="img-responsive" alt=""></img></a>
@@ -389,7 +387,7 @@ header.fullwidth .container {
 	    <a href="#"><img src="../images/addimg2.jpg" class="img-responsive" alt=""></img></a>   
 	   
 	   </div>
-	   </div>
+	   </div> -->
 		<!-- Map -->
 		<div class="clearfix"></div>
 		<div id="map-container">

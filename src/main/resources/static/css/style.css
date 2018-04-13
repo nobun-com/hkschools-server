@@ -340,6 +340,11 @@ header.fullwidth .container {
 
 #footer .social-icons li a:hover { opacity: 1; }
 
+html,body{
+	    overflow-x: hidden;
+	    font-family: Arial, Helvetica, sans-serif !important;
+}
+
 
 /* ---------------------------------- */
 /* Back to top
@@ -10862,7 +10867,7 @@ img.mfp-img {
 		background-color: #fff;
 	}
 
-	body p { font-size: 16px; line-height: 29px; }
+	body p { font-size: 16px; line-height: 29px; padding-left: 15px;}
 
 	#wrapper { background-color: #fff; }
 
@@ -10870,7 +10875,7 @@ img.mfp-img {
 	body, h1, h2, h3, h4, h5, h6,  input[type="text"], input[type="password"], input[type="email"],
 	textarea, select, input[type="button"], input[type="submit"], button, #tiptip_content, .map-box p, .map-box div,
 	.numerical-rating .rating-counter
-	{ font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif; text-transform: none; }
+	{ font-family: Arial, Helvetica, sans-serif; text-transform: none; }
 
 
 	/* Headlines */
@@ -12311,6 +12316,8 @@ body{
 }
 .pvschp{
 	padding-left:15px;
+	position: relative;
+    top: 18px;
 }
 .table-bordered {
     border: 2px solid #dddddd;
@@ -12321,6 +12328,9 @@ body{
 
 .addInfo .table th ,.addInfo .table td{
 	    text-align: -webkit-left;
+}
+.addInfo .table th {
+	    min-width:100px !important;
 }
 #header-container{
 	    background-color: #66B2FF !important;

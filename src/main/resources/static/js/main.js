@@ -106,7 +106,6 @@
 		            		return data;
 		            	}
 		            },
-		            { "data": "address" },
 		            { "data": "schoolCategory" },
 		            { "data": "religion" },
 		            { "data": "district" },
@@ -183,11 +182,11 @@
 		            		return data;
 		            	}
 		            },
-		            { "data": "district" },
 		            { "data": "schoolType" },
+		            { "data": "district" },
 		            { "data": "sponsoringBody" },
-		            { "data": "religion" },
 		            { "data": "studentGender" },
+		            { "data": "religion" },
 		        ]
 		    } );
 			$scope.loading = false;

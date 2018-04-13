@@ -321,15 +321,15 @@ header.fullwidth .container {
 					<!-- Search / End -->
 					<div class="schoolft">
 						<div class="col-sm-3">
-							<select ng-model="schoolCategoury" ng-change="filterKindergartenData()" class="form-control" id="sel1">
-								<option selected="true" value="all" >類別</option>
-								<option ng-repeat="categoury in filterData.schoolCategorys" value="{{categoury}}">{{categoury}}</option>
-							</select>
-						</div>
-						<div class="col-sm-3">
 							<select ng-model="schoolDistrict" ng-change="filterKindergartenData()" class="form-control" id="sel11">
 								<option selected="true" value="all">地區</option>
 								<option ng-repeat="district in filterData.schoolDistricts" value="{{district}}">{{district}}</option>
+							</select>
+						</div>
+						<div class="col-sm-3">
+							<select ng-model="schoolCategoury" ng-change="filterKindergartenData()" class="form-control" id="sel1">
+								<option selected="true" value="all" >類別</option>
+								<option ng-repeat="categoury in filterData.schoolCategorys" value="{{categoury}}">{{categoury}}</option>
 							</select>
 						</div>
 						<div class="col-sm-3">
