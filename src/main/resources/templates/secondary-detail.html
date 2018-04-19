@@ -387,9 +387,9 @@ header.fullwidth .container {
                                            <th>地址 :</th><!-- Address -->
                                            <td th:text="${sSEntity.address}"></td>
                                        </tr>
-                                       <tr>
-                                           <th>地圖 :</th><!-- Map -->
-                                          <td><a href="#">點擊加載學校地圖</a> </td>
+                                       <tr th:if="${sSEntity.lattitude != null}">
+                                          <th>地圖:</th><!-- Map -->
+                                          <td><a th:href="${'http://maps.google.com/maps?q=loc:' + sSEntity.lattitude + '+' + sSEntity.longitude}" target="_black">點擊加載學校地圖</a> </td>
                                        </tr>
                                        <tr>
                                           <th>電話:</th><!-- Phone -->
@@ -434,7 +434,7 @@ header.fullwidth .container {
 	
 		<!-- Map -->
 		<div class="clearfix"></div>
-		<div id="map-container">
+		<div id="map-container" th:if="${sSEntity.lattitude != null}">
 		    <div id="map" data-map-zoom="9" data-map-scroll="true">
 		        <!-- map goes here -->
 		    </div>

@@ -37,7 +37,7 @@
 		            { "data": "schoolCategory" },
 		            { "data": "applicationFee" },
 		            { "data": "withchildcareservicesforchildrenagedunder2" },
-		            { "data": "scale" },
+		            { "data": "totalNoOfPermitteAccommodationOfClassroomsinuse" },
 		            { "data": "time" }
 		        ]
 		    } );

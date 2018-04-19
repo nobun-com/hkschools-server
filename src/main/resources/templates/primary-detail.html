@@ -195,27 +195,27 @@ header.fullwidth .container {
                            <h3>學校類別</h3><!-- School category -->
                         </div>
                      <div class="pvsch">
-                           <h2 th:text="${pSEntity.schoolCategouryTitle}"></h2>
+                           <h2 th:text="${pSEntity.schoolCategory}"></h2>
                         </div>
-                        <p th:text="${pSEntity.schoolCategory}"></p>
+                        <p th:text="${pSEntity.schoolCategouryTitle}"></p>
                      </div> 
                      <div class="row">
                         <div class="item-title">
                            <h3>學校歷史</h3><!--  School history -->
                         </div>
                         <div class="pvsch">
-                           <h2 th:text="${pSEntity.schoolHistory}"></h2>
+                           <h2 th:text="${pSEntity.schoolHistoryTitle}"></h2>
                         </div>
-                        <p class="pvsch" th:text="${pSEntity.schoolHistoryTitle}"></p>
+                        <p class="pvsch" th:text="${pSEntity.schoolHistory}"></p>
                      </div>
                      <div class="row">
                         <div class="item-title">
                             <h3>學校設施</h3> <!-- School facilities -->
                         </div>
                         <div class="pvsch">
-                           <h2 th:text="${pSEntity.schoolHistoryTitle}"></h2>
+                           <h2 th:text="${pSEntity.schoolFacilitiesTitle}"></h2>
                         </div>
-                        <p class="pvsch" th:text="${pSEntity.schoolHistory}">
+                        <p class="pvsch" th:text="${pSEntity.schoolFacilities}">
                         </p>
                      </div>
                      <div class="row">
@@ -315,7 +315,6 @@ header.fullwidth .container {
                      </div>
                      <div class="row">
                         <div class="item-title">
-                            <h3>學費</h3><!--School fees  -->
                         </div>
                         <div class="pvsch">
                            <h2></h2>
@@ -402,9 +401,9 @@ header.fullwidth .container {
                                           <th>地址 :</th><!-- Address -->
                                            <td th:text="${pSEntity.address}"></td>
                                        </tr>
-                                       <tr>
-                                          <th>地图 :</th><!-- Map -->
-                                          <td><a href="#">点击加载学校地图</a> </td>
+                                       <tr th:if="${pSEntity.lattitude != null}">
+                                          <th>地圖:</th><!-- Map -->
+                                          <td><a th:href="${'http://maps.google.com/maps?q=loc:' + pSEntity.lattitude + '+' + pSEntity.longitude}" target="_black">點擊加載學校地圖</a> </td>
                                        </tr>
                                        <tr>
                                           <th>電話 :</th><!-- Phone -->
@@ -448,7 +447,7 @@ header.fullwidth .container {
 	
 		<!-- Map -->
 		<div class="clearfix"></div>
-		<div id="map-container">
+		<div id="map-container" th:if="${pSEntity.lattitude != null}">
 		    <div id="map" data-map-zoom="9" data-map-scroll="true">
 		        <!-- map goes here -->
 		    </div>

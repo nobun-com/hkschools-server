@@ -1,7 +1,6 @@
 
 // Default infoBox Rating Type
 var infoBox_ratingType = 'star-rating';
-
 (function($){
     "use strict";
 
@@ -32,12 +31,6 @@ var infoBox_ratingType = 'star-rating';
                 success: function (data) {
                     console.log('Submission was successful.');
                     dataa=data;
-                  /*  for(var i = 0 ; i < 5; i++) {
-                  	  
-                  	  var temp = [locationData('listings-single-page.html','images/listing-item-02.jpg', data[i].schoolName, data[i].address, '5.0', '23'), data[i].lattitude, data[i].longitude, i, '<i class="im im-icon-Map-Marker2" style="color: red;"></i>'];
-                  	  console.log(temp)
-                  	  locations.push(temp);
-                    }*/
                 },
                 error: function (data) {
                     console.log('An error occurred.');
@@ -47,24 +40,12 @@ var infoBox_ratingType = 'star-rating';
             for(var i = 0 ; i < dataa.length; i++) {
            	  var temp = [locationData('listings-single-page.html','images/listing-item-02.jpg', dataa[i].schoolName, dataa[i].address, '5.0', '23'), dataa[i].lattitude, dataa[i].longitude, i, '<i class="im im-icon-Map-Marker2" style="color: red;"></i>'];
            	  locations.push(temp);
-             }
+            }
       }
    
       // Infobox Output
       function locationData(locationURL,locationImg,locationTitle, locationAddress, locationRating, locationRatingCounter) {
-          return(''+
-        /*    '<a href="'+ locationURL +'" class="listing-img-container">'+
-               '<div class="infoBox-close"><i class="fa fa-times"></i></div>'+
-               '<img src="../images/addimg2.jpg" alt="">'+
-
-               '<div class="listing-item-content">'+
-                  '<h3>'+locationTitle+'</h3>'+
-                  '<span>'+locationAddress+'</span>'+
-               '</div>'+
-
-            '</a>'+*/
-
-            '<div class="listing-content">'+
+          return('<div class="listing-content">'+
             '<div class="infoBox-close"><i class="fa fa-times"></i></div>'+
                '<div class="listing-title">'+
                   '<h5>'+locationTitle+'</h5>'+
@@ -83,11 +64,8 @@ var infoBox_ratingType = 'star-rating';
          }
       });
 
-
-
       // Map Attributes
       // ----------------------------------------------- //
-
       var mapZoomAttr = $('#map').attr('data-map-zoom');
       var mapScrollAttr = $('#map').attr('data-map-scroll');
 
@@ -104,12 +82,14 @@ var infoBox_ratingType = 'star-rating';
         var scrollEnabled = false;
       }
 
+      var cen = new google.maps.LatLng(locations[0][1], locations[0][2]);
+      console.log("******************", cen);
 
       // Main Map
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 14,
         scrollwheel: scrollEnabled,
-        center: new google.maps.LatLng( 22.3619827, 114.20678410000005),
+        center: cen,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         zoomControl: false,
         mapTypeControl: false,

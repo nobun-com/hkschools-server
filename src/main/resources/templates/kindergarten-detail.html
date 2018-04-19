@@ -196,38 +196,27 @@ header.fullwidth .container {
                            <h3>學校類別</h3><!-- School category -->
                         </div>
                         <div class="pvsch"> 
-                           <!-- <h2 th:text="${kGEntity.schoolCategoryTitle}"></h2> -->
+                           <h2 th:text="${kGEntity.schoolCategory}"></h2>
                         </div> 
-                        <p class="pvschp" th:text="${kGEntity.schoolCategory}">
-                        </p>
+                        <!-- <p class="pvschp" th:text="${kGEntity.schoolCategory}"></p> -->
                      </div>
                      <div class="row">
                         <div class="item-title">
                            <h3>學校歷史</h3><!--  School history -->
                         </div>
                         <div class="pvsch">
-                           <h2 th:text="${'成立於 ' + kGEntity.schoolFoundingyear}"></h2>
-                        </div>
-                        <p class="pvschp" th:text="${kGEntity.schoolHistory}">
-                        </p>
-                     </div>
-                     <div class="row">
-                        <div class="item-title">
-                           <h3>學校設施</h3> <!-- School facilities -->
-                        </div>
-                        <div class="pvsch" >
                            <h2 th:text="${kGEntity.schoolFacilitiesTitle}"></h2>
                         </div>
                         <p class="pvschp" th:text="${kGEntity.schoolFacilities}"> </p>
                      </div>
                      <div class="row">
                         <div class="item-title">
-                           <h3>教學情況</h3><!--  Teaching situation -->
+                           <h3>學校設施</h3> <!-- School facilities -->
                         </div>
-                        <div class="pvsch">
-                           <h2 th:text="${kGEntity.teachingSituationTitle}"></h2>
+                        <div class="pvsch" >
+                           <h2 th:text="${kGEntity.schoolHistoryTitle}"></h2>
                         </div>
-                        <p class="pvschp"  th:text="${kGEntity.teachingSituation}"></p>
+                        <p class="pvschp" th:text="${kGEntity.schoolHistory}"></p>
                      </div>
                      <div class="row" style="padding:0 15px;">
                         <div class="infotable">
@@ -272,10 +261,9 @@ header.fullwidth .container {
                            <h3>學校收費</h3><!--School fees  -->
                         </div>
                         <div class="pvsch">
-                           <h2></h2>
+                           <h2 th:text="${kGEntity.teachingSituationTitle}"></h2>
                         </div>
-                        <p class="pvschp">
-                        </p>
+                        <p class="pvschp"  th:text="${kGEntity.teachingSituation}"></p>
                      </div>
                      <div class="row" style="padding:0 15px;">
                         <div class="infotable">
@@ -326,9 +314,9 @@ header.fullwidth .container {
                                             <th>地址 :</th><!-- Address --> 
                                           <td th:text="${kGEntity.address}"></td>
                                        </tr>
-                                       <tr>
+                                       <tr th:if="${kGEntity.lattitude != null}">
                                           <th>地圖:</th><!-- Map -->
-                                          <td><a href="#">點擊加載學校地圖</a> </td>
+                                          <td><a th:href="${'http://maps.google.com/maps?q=loc:' + kGEntity.lattitude + '+' + kGEntity.longitude}" target="_black">點擊加載學校地圖</a> </td>
                                        </tr>
                                        <tr>
                                           <th>聯繫電話: </th><!-- Tel -->
@@ -369,7 +357,7 @@ header.fullwidth .container {
 	
 		<!-- Map -->
 		<div class="clearfix"></div>
-		<div id="map-container">
+		<div id="map-container" th:if="${kGEntity.lattitude != null}">
 		    <div id="map" data-map-zoom="9" data-map-scroll="true">
 		        <!-- map goes here -->
 		    </div>
