@@ -36,13 +36,13 @@
 		            { "data": "district" },
 		            { "data": "schoolCategory" },
 		            { "data": "applicationFee",
-			      "render":function(data, type, row, meta){
-			   	if(type === 'display') {
-			   	data = (row.nurseryAMSessionfees == '免費' && row.nurseryPMSessionfees == '免費' && row.nurseryWDSessionfees == '免費') ? '免費' : '-'
-			   	}
-			   	return data;
-			   	}
-			    },
+		            	"render":function(data, type, row, meta){
+		            		if(type === 'display') {
+		            			data = (row.nurseryAMSessionfees == '免費' || row.nurseryPMSessionfees == '免費' || row.nurseryWDSessionfees == '免費') ? '免費' : '-'
+		            		}
+		            		return data;
+		            	}
+		            },
 		            { "data": "withchildcareservicesforchildrenagedunder2" },
 		            { "data": "totalNoOfPermitteAccommodationOfClassroomsinuse" },
 		            { "data": "time" }
