@@ -37,10 +37,6 @@ public class HomeRestController extends BaseController {
 	@Resource
 	private PrimarySchoolService primaryService;
 
-	
-
-
-
 	@RequestMapping(value = "/getAllKinderGarten", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -85,7 +81,7 @@ public class HomeRestController extends BaseController {
 		String studentGender = req.getParameter("studentGender");
 		String schoolId =req.getParameter("schoolId");
 		Map<String, List<PSEntity>> data = new HashMap<String, List<PSEntity>>();
-		data.put("data", primaryService.findAllPrimary(schoolCategory,schoolDistrict,religion,studentGender,schoolId));
+		data.put("data", primaryService.findAllPrimary(schoolCategory,schoolDistrict,religion,studentGender));
 		return data;
 
 	}

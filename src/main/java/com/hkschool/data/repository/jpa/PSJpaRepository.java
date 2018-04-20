@@ -23,7 +23,6 @@ public interface PSJpaRepository extends PagingAndSortingRepository<PSEntity, Lo
 	@Query(nativeQuery=true, value="select distinct PS.district from primary_school PS group by PS.district order by PS.district DESC")
 	List<Object[]> getSchoolDistrict();
 	
-	
 	@Query(nativeQuery=true, value="select distinct PS.religion from primary_school PS")
 	List<String> getReligion();
 	
@@ -33,8 +32,6 @@ public interface PSJpaRepository extends PagingAndSortingRepository<PSEntity, Lo
 	@Query(nativeQuery=true, value="select distinct PS.school_id from primary_school PS")
 	List<String> getSchoolId();
 
-	@Query(nativeQuery=true, value="select * from primary_school PS where PS.school_category like :schoolCategory and PS.district like :schoolDistrict and PS.religion like :religion and PS.student_gender like :studentGender and PS.school_id like :schoolId")
-	Iterable<PSEntity> findAllConditional(@Param(value = "schoolCategory") String schoolCategory, @Param(value = "schoolDistrict") String schoolDistrict,  @Param(value = "religion") String religion, @Param(value = "studentGender") String studentGender, @Param(value = "schoolId") String schoolId);
-
-	
+	@Query(nativeQuery=true, value="select * from primary_school PS where PS.school_category like :schoolCategory and PS.district like :schoolDistrict and PS.religion like :religion and PS.student_gender like :studentGender order by PS.district DESC")
+	Iterable<PSEntity> findAllConditional(@Param(value = "schoolCategory") String schoolCategory, @Param(value = "schoolDistrict") String schoolDistrict,  @Param(value = "religion") String religion, @Param(value = "studentGender") String studentGender);
 }

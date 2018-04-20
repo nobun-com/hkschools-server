@@ -25,9 +25,8 @@ public class PrimarySchoolServiceImpl implements PrimarySchoolService {
 		return pSJpaRepository.findById(id);
 	}
 
-	
 	@Override
-	public List<PSEntity> findAllPrimary(String schoolCategory, String schoolDistrict,String religion,String studentGender,String schoolId) {
+	public List<PSEntity> findAllPrimary(String schoolCategory, String schoolDistrict,String religion,String studentGender) {
 		if(schoolCategory == null || schoolCategory.isEmpty()) {
 			schoolCategory =  "%";
 		}
@@ -41,10 +40,7 @@ public class PrimarySchoolServiceImpl implements PrimarySchoolService {
 		if(studentGender == null || studentGender.isEmpty()) {
 			studentGender =  "%";
 		}
-		if(schoolId == null || schoolId.isEmpty()) {
-			schoolId =  "%";
-		}
-		Iterable<PSEntity> entities = pSJpaRepository.findAllConditional(schoolCategory,schoolDistrict,religion,studentGender,schoolId);
+		Iterable<PSEntity> entities = pSJpaRepository.findAllConditional(schoolCategory,schoolDistrict,religion,studentGender);
 		List<PSEntity> beans = new ArrayList<PSEntity>();
 
 		for (PSEntity psjEntity : entities) {
