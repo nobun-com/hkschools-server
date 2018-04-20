@@ -22,7 +22,7 @@
 				$scope.table.destroy();
 			}
 
-			$scope.table = $('#example').DataTable( {
+			$scope.table = $('#school-list').DataTable( {
 		        "ajax": api,
 		        "columns": [
 		            { "data": "schoolName",
@@ -102,7 +102,7 @@
 				$scope.table.destroy();
 			}
 
-			$scope.table = $('#example').DataTable( {
+			$scope.table = $('#school-list').DataTable( {
 		        "ajax": api,
 		        "columns": [
 		            { "data": "schoolName",
@@ -178,7 +178,7 @@
 				$scope.table.destroy();
 			}
 
-			$scope.table = $('#example').DataTable( {
+			$scope.table = $('#school-list').DataTable( {
 		        "ajax": api,
 		        "columns": [
 		            { "data": "schoolName",
