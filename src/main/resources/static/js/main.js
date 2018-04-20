@@ -26,7 +26,7 @@
 		        "ajax": api,
 		        "columns": [
 		            { "data": "schoolName",
-		              "render":function(data, type, row, meta){
+		            	"render":function(data, type, row, meta){
 		            		if(type === 'display'){
 		            			data = '<a href="/kinderGarten-detail?schoolId='+row.id+'">'+data+'</a>'
 		            		}

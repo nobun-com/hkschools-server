@@ -218,6 +218,15 @@ header.fullwidth .container {
                         </div>
                         <p class="pvschp" th:text="${kGEntity.schoolFacilities}"> </p>
                      </div>
+                     <div class="row">
+                        <div class="item-title">
+                           <h3>教學情況</h3><!--  Teaching situation -->
+                        </div>
+                        <div class="pvsch">
+                           <h2 th:text="${kGEntity.teachingSituationTitle}"></h2>
+                        </div>
+                        <p class="pvschp"  th:text="${kGEntity.teachingSituation}"></p>
+                     </div>
                      <div class="row" style="padding:0 15px;">
                         <div class="infotable">
                            <table class="table table-bordered">
@@ -261,9 +270,9 @@ header.fullwidth .container {
                            <h3>學校收費</h3><!--School fees  -->
                         </div>
                         <div class="pvsch">
-                           <h2 th:text="${kGEntity.teachingSituationTitle}"></h2>
+                           <h2 th:text="FIXME ${kGEntity.teachingSituationTitle}"></h2>
                         </div>
-                        <p class="pvschp"  th:text="${kGEntity.teachingSituation}"></p>
+                        <p class="pvschp" th:text="FIXME ${kGEntity.teachingSituation}"></p>
                      </div>
                      <div class="row" style="padding:0 15px;">
                         <div class="infotable">
