@@ -46,7 +46,8 @@
 		            { "data": "withchildcareservicesforchildrenagedunder2" },
 		            { "data": "totalNoOfPermitteAccommodationOfClassroomsinuse" },
 		            { "data": "time" }
-		        ]
+		        ],
+		        "order": [[ 1, "desc" ]]
 		    } );
 			$scope.loading = false;
 		}
@@ -118,7 +119,8 @@
 		            { "data": "district" },
 		            { "data": "schoolId" },
 		            { "data": "studentGender" }
-		        ]
+		        ],
+		        "order": [[ 3, "desc" ]]
 		    } );
 			$scope.loading = false;
 		}
@@ -194,7 +196,8 @@
 		            { "data": "sponsoringBody" },
 		            { "data": "studentGender" },
 		            { "data": "religion" },
-		        ]
+		        ],
+		        "order": [[ 1, "desc" ]]
 		    } );
 			$scope.loading = false;
 		}
