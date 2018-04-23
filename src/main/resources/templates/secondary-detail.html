@@ -192,8 +192,8 @@ header.fullwidth .container {
                               </p>
                            </div>
                         </div>
-                        <div class="col-md-5 image-school">
-                           <img th:if = "${sSEntity.imageTop !=null}" th:with="url=${sSEntity.imageTop}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
+                        <div class="col-md-5 image-school" th:if = "${sSEntity.imageTop !=null}">
+                           <img th:with="url=${sSEntity.imageTop}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
                            <p style="text-align: center;font-size: 14px;" th:text="${sSEntity.schoolName}"></p>
                         </div>
                      </div>
@@ -420,9 +420,8 @@ header.fullwidth .container {
                               </div>
                            </div>
                         </div>
-                        <div class="col-md-5 image-school" style="padding: 87px 21px;">
-                           <img th:if="${sSEntity.image !=null}" th:with="url=${sSEntity.image}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
-                            
+                        <div class="col-md-5 image-school" style="padding: 87px 21px;" th:if="${sSEntity.image !=null}">
+                           <img th:with="url=${sSEntity.image}" th:src="${url}" alt="图像不可用" class="img-responsive"></img>
                            <p style="text-align: center;font-size: 14px;" th:text="${sSEntity.schoolName}"></p>
                         </div>
                      </div>
