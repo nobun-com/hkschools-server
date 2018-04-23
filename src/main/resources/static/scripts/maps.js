@@ -73,7 +73,7 @@ var infoBox_ratingType = 'star-rating';
           var zoomLevel = parseInt(mapZoomAttr);
     	 
       } else {
-          var zoomLevel = 5;
+          var zoomLevel = 3;
       }
 
       if (typeof mapScrollAttr !== typeof undefined && mapScrollAttr !== false) {
@@ -87,7 +87,7 @@ var infoBox_ratingType = 'star-rating';
 
       // Main Map
       var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 14,
+        zoom: 16,
         scrollwheel: scrollEnabled,
         center: cen,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
@@ -332,7 +332,7 @@ var infoBox_ratingType = 'star-rating';
       var myLatlng = new google.maps.LatLng({lng: $( '#singleListingMap' ).data('longitude'),lat: $( '#singleListingMap' ).data('latitude'), });
 
       var single_map = new google.maps.Map(document.getElementById('singleListingMap'), {
-        zoom: 15,
+        zoom: 16,
         center: myLatlng,
         scrollwheel: false,
         zoomControl: false,
