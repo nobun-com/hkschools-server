@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,9 @@ import com.hkschool.data.repository.jpa.KGJpaRepository;
 public class KinderGartenServiceImpl implements KinderGartenService {
 
 	@Autowired
+	EntityManager em;
+
+	@Autowired
 	KGJpaRepository kGJpaRepository;
 
 	@Override
@@ -25,28 +30,45 @@ public class KinderGartenServiceImpl implements KinderGartenService {
 		return kGJpaRepository.findById(id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<KGEntity> findAll(String schoolCategoury, String schoolDistrict, String withchildcareservicesforchildrenagedunder2,String time) {
-		if(schoolCategoury == null || schoolCategoury.isEmpty()) {
-			schoolCategoury =  "%";
+	public List<Map<String, Object>> findAll(String schoolCategoury, String schoolDistrict, String withchildcareservicesforchildrenagedunder2,String time) {
+
+		String sql = "select KG.id, KG.district, KG.school_category, KG.nurseryamsessionfees, KG.nurserypmsessionfees, KG.nurserywdsessionfees, KG.withchildcareservicesforchildrenagedunder2, "
+				+ "KG.total_no_of_permitte_accommodation_of_classroomsinuse, KG.time, KG.school_name from kindergarten_school KG where KG.id > 0";
+
+		if(schoolCategoury != null && !schoolCategoury.isEmpty()) {
+			sql = sql + " and KG.school_category = '" + schoolCategoury + "'" ;
 		}
-		if(schoolDistrict == null || schoolDistrict.isEmpty()) {
-			schoolDistrict =  "%";
+		if(schoolDistrict != null && !schoolDistrict.isEmpty()) {
+			sql = sql + " and KG.district = '" + schoolDistrict + "'" ;
 		}
-		if(withchildcareservicesforchildrenagedunder2 == null || withchildcareservicesforchildrenagedunder2.isEmpty()) {
-			withchildcareservicesforchildrenagedunder2 =  "%";
+		if(withchildcareservicesforchildrenagedunder2 != null && !withchildcareservicesforchildrenagedunder2.isEmpty()) {
+			sql = sql + " and KG.withchildcareservicesforchildrenagedunder2 = '" + withchildcareservicesforchildrenagedunder2 + "'" ;
+		}
+		if(time != null && !time.isEmpty()) {
+			sql = sql + " and KG.time = '" + time + "'" ;
 		}
 		
-		if(time == null || time.isEmpty()) {
-			time =  "%";
+		List<Object[]> schoolsData = em.createNativeQuery(sql).getResultList();
+		
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		
+		for(Object[] schoolData : schoolsData) {
+			String free = ("免費".equals((String)schoolData[3]) || "免費".equals((String)schoolData[4]) || "免費".equals((String)schoolData[5]) ) ? "免費" : "-";
+			Map<String, Object> school = new HashMap<String, Object>();
+			school.put("id", schoolData[0]);
+			school.put("district", schoolData[1]);
+			school.put("schoolCategory", schoolData[2]);
+			school.put("free", free);
+			school.put("withchildcareservicesforchildrenagedunder2", schoolData[6]);
+			school.put("totalNoOfPermitteAccommodationOfClassroomsinuse", schoolData[7]);
+			school.put("time", schoolData[8]);
+			school.put("schoolName", schoolData[9]);
+			result.add(school);
 		}
-		Iterable<KGEntity> entities = kGJpaRepository.findAllConditional(schoolCategoury, schoolDistrict,withchildcareservicesforchildrenagedunder2,time);
-		List<KGEntity> beans = new ArrayList<KGEntity>();
-
-		for (KGEntity kgjEntity : entities) {
-			beans.add(kgjEntity);
-		}
-		return beans;
+				
+		return result;
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public interface KinderGartenService {
 
 	Map<String, Object> initFilter();
 
-	List<KGEntity> findAll(String schoolCategoury, String schoolDistrict, String withchildcareservicesforchildrenagedunder2,String time);
+	List<Map<String, Object>> findAll(String schoolCategoury, String schoolDistrict, String withchildcareservicesforchildrenagedunder2,String time);
 
 	List<Map<String, Object>> getDistricts();
 }

@@ -22,25 +22,6 @@ var infoBox_ratingType = 'star-rating';
     	  console.log("sSEntity",sSEntity);
     	  var locData = [locationData('listings-single-page.html','images/listing-item-02.jpg', sSEntity.schoolName, sSEntity.address, '5.0', '23'), sSEntity.lattitude, sSEntity.longitude, i, '<i class="im im-icon-Map-Marker2" style="color: red;"></i>'];
     	  locations.push(locData);
-      } else {
-        	var dataa; 
-            $.ajax({
-                type: "GET",
-                async:false,
-                url: "/getAllKinderGartenMapData",
-                success: function (data) {
-                    console.log('Submission was successful.');
-                    dataa=data;
-                },
-                error: function (data) {
-                    console.log('An error occurred.');
-                    console.log(data);
-                },
-            });
-            for(var i = 0 ; i < dataa.length; i++) {
-           	  var temp = [locationData('listings-single-page.html','images/listing-item-02.jpg', dataa[i].schoolName, dataa[i].address, '5.0', '23'), dataa[i].lattitude, dataa[i].longitude, i, '<i class="im im-icon-Map-Marker2" style="color: red;"></i>'];
-           	  locations.push(temp);
-            }
       }
    
       // Infobox Output

@@ -28,9 +28,6 @@ public interface KGJpaRepository extends PagingAndSortingRepository<KGEntity, Lo
 	@Query(nativeQuery=true, value="select distinct KG.time from kindergarten_school KG")
 	List<String> getTime();
 
-	@Query(nativeQuery=true, value="select * from kindergarten_school KG where KG.school_category like :schoolCategoury and KG.district like :schoolDistrict and KG.withchildcareservicesforchildrenagedunder2 like :withchildcareservicesforchildrenagedunder2 and KG.time like :time order by KG.district DESC")
-	Iterable<KGEntity> findAllConditional(@Param(value = "schoolCategoury") String schoolCategoury, @Param(value = "schoolDistrict") String schoolDistrict, @Param(value = "withchildcareservicesforchildrenagedunder2") String withchildcareservicesforchildrenagedunder2, @Param(value = "time") String time);
-
 	@Query(nativeQuery=true, value="select * from kindergarten_school KG where KG.id like :id")
 	KGEntity getKindergartenSchoolDataById(@Param(value = "id")Long id);
 }

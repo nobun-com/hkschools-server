@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.hkschool.bean.jpa.KGEntity;
 import com.hkschool.bean.jpa.PSEntity;
 import com.hkschool.bean.jpa.SSEntity;
 import com.hkschool.business.service.KinderGartenService;
@@ -34,18 +33,15 @@ public class HomeRestController extends BaseController {
 	@Resource
 	private KinderGartenService kinderGartenService;
 
-	@Resource
-	private PrimarySchoolService primaryService;
-
 	@RequestMapping(value = "/getAllKinderGarten", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<KGEntity>> findAll(HttpServletRequest req) {
+	public Map<String, List<Map<String, Object>>> findAll(HttpServletRequest req) {
 		String schoolCategoury = req.getParameter("schoolCategoury");
 		String schoolDistrict = req.getParameter("schoolDistrict");
 		String withchildcareservicesforchildrenagedunder2 = req.getParameter("withchildcareservicesforchildrenagedunder2");
 		String time = req.getParameter("time");
-		Map<String, List<KGEntity>> data = new HashMap<String, List<KGEntity>>();
+		Map<String, List<Map<String, Object>>> data = new HashMap<String, List<Map<String, Object>>>();
 		data.put("data", kinderGartenService.findAll(schoolCategoury, schoolDistrict,withchildcareservicesforchildrenagedunder2,time));
 		return data;
 	}
@@ -57,13 +53,9 @@ public class HomeRestController extends BaseController {
 		return kinderGartenService.initFilter();
 	}
 
-	@RequestMapping(value = "/getAllPrimary", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public List<PSEntity> findAllPrimary() {
-		return primaryService.findAll();
-	}
-	
+	@Resource
+	private PrimarySchoolService primaryService;
+
 	@RequestMapping(value = "/getPSFilters", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -79,7 +71,6 @@ public class HomeRestController extends BaseController {
 		String schoolDistrict = req.getParameter("schoolDistrict");
 		String religion = req.getParameter("religion");
 		String studentGender = req.getParameter("studentGender");
-		String schoolId =req.getParameter("schoolId");
 		Map<String, List<PSEntity>> data = new HashMap<String, List<PSEntity>>();
 		data.put("data", primaryService.findAllPrimary(schoolCategory,schoolDistrict,religion,studentGender));
 		return data;
@@ -89,25 +80,13 @@ public class HomeRestController extends BaseController {
 	@Resource
 	private SecondarySchoolService secondaryservice;
 	
-	@RequestMapping(value = "/getAllsecondary", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public List<SSEntity> findAllSecondary() {
-		return secondaryservice.findAll();
-	}
-	
-	
 	@RequestMapping(value = "/getSSFilters", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	public Map<String, Object> initgetSSFilters(HttpServletRequest req) {
 		return secondaryservice.initFilter();
 	}
-	
-	
 
-	
-	
 	@RequestMapping(value = "/getAllSecondarySchool", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
@@ -120,13 +99,6 @@ public class HomeRestController extends BaseController {
 		Map<String, List<SSEntity>> data = new HashMap<String, List<SSEntity>>();
 		data.put("data",secondaryservice.findAllSecondary(schoolCategory,schoolDistrict,religion,studentGender,sponsoringBody));
 		return data;
-	}
-	
-	@RequestMapping(value = "/getAllKinderGartenMapData", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	@ResponseStatus(HttpStatus.OK)
-	@ResponseBody
-	public List<KGEntity> getAllKinderGartenMapData(HttpServletRequest req) {
-		return kinderGartenService.findAll("", "", "", "");
 	}
 	
 }
