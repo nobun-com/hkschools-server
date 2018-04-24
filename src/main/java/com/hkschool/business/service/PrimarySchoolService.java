@@ -62,7 +62,7 @@ public interface PrimarySchoolService {
 
 	Map<String, Object> initFilter();
 
-	List<PSEntity> findAllPrimary(String schoolCategory, String schoolDistrict,String religion,String studentGender);
+	List<Map<String, Object>> findAllPrimary(String schoolCategory, String schoolDistrict,String religion,String studentGender);
 
 	List<Map<String, Object>> getDistrict();
 }

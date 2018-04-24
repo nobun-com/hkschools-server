@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +18,9 @@ import com.hkschool.data.repository.jpa.SSJpaRepository;
 @Component
 @Transactional
 public class SecondarySchoolServiceImpl implements SecondarySchoolService {
+
+	@Autowired
+	EntityManager em;
 
 	@Autowired
 	SSJpaRepository sSJpaRepository;
@@ -37,32 +42,44 @@ public class SecondarySchoolServiceImpl implements SecondarySchoolService {
 	}
 
 	
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<SSEntity> findAllSecondary(String schoolCategory, String schoolDistrict, String religion, String studentGender, String sponsoringBody) {
-		if(schoolCategory == null || schoolCategory.isEmpty()) {
-			schoolCategory =  "%";
-		}
-		if(schoolDistrict == null || schoolDistrict.isEmpty()) {
-			schoolDistrict =  "%";
-		}
-		if(religion == null || religion.isEmpty()) {
-			religion =  "%";
-		}
-		
-		if(studentGender == null || studentGender.isEmpty()) {
-			studentGender =  "%";
-		}
-		if(sponsoringBody == null || sponsoringBody.isEmpty()) {
-			sponsoringBody =  "%";
-		}
-		
-		Iterable<SSEntity> entities = sSJpaRepository.findAllConditional(schoolCategory,schoolDistrict,religion,studentGender,sponsoringBody);
-		List<SSEntity> beans = new ArrayList<SSEntity>();
+	public List<Map<String, Object>> findAllSecondary(String schoolCategory, String schoolDistrict, String religion, String studentGender, String sponsoringBody) {
 
-		for (SSEntity ssjEntity : entities) {
-			beans.add(ssjEntity);
+		String sql = "select SS.id, SS.school_name, SS.school_type, SS.district, SS.sponsoring_body, SS.student_gender, SS.religion from secondary_school SS where SS.id > 0";
+
+		if(schoolCategory != null && !schoolCategory.isEmpty()) {
+			sql = sql + " and SS.school_type = '" + schoolCategory + "'" ;
 		}
-		return beans;
+		if(schoolDistrict != null && !schoolDistrict.isEmpty()) {
+			sql = sql + " and SS.district = '" + schoolDistrict + "'" ;
+		}
+		if(religion != null && !religion.isEmpty()) {
+			sql = sql + " and SS.religion = '" + religion + "'" ;
+		}
+		if(studentGender != null && !studentGender.isEmpty()) {
+			sql = sql + " and SS.student_gender = '" + studentGender + "'" ;
+		}
+		if(sponsoringBody != null && !sponsoringBody.isEmpty()) {
+			sql = sql + " and SS.sponsoring_body = '" + sponsoringBody + "'" ;
+		}
+		
+		List<Object[]> schoolsData = em.createNativeQuery(sql).getResultList();
+		
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		
+		for(Object[] schoolData : schoolsData) {
+			Map<String, Object> school = new HashMap<String, Object>();
+			school.put("id", schoolData[0]);
+			school.put("schoolName", schoolData[1]);
+			school.put("schoolType", schoolData[2]);
+			school.put("district", schoolData[3]);
+			school.put("sponsoringBody", schoolData[4]);
+			school.put("studentGender", schoolData[5]);
+			school.put("religion", schoolData[6]);
+			result.add(school);
+		}
+		return result;
 	}
 	
 	@Override

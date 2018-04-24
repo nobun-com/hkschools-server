@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,34 +22,51 @@ public class PrimarySchoolServiceImpl implements PrimarySchoolService {
 	@Autowired
 	PSJpaRepository pSJpaRepository;
 
+	@Autowired
+	EntityManager em;
+
 	@Override
 	public PSEntity findById(Long id) {
 		return pSJpaRepository.findById(id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<PSEntity> findAllPrimary(String schoolCategory, String schoolDistrict,String religion,String studentGender) {
-		if(schoolCategory == null || schoolCategory.isEmpty()) {
-			schoolCategory =  "%";
+	public List<Map<String, Object>> findAllPrimary(String schoolCategory, String schoolDistrict, String religion, String studentGender) {
+
+		String sql = "select PS.id, PS.school_name, PS.school_category, PS.religion, PS.district, PS.school_id, PS.student_gender from primary_school PS where PS.id > 0";
+
+		if(schoolCategory != null && !schoolCategory.isEmpty()) {
+			sql = sql + " and PS.school_category = '" + schoolCategory + "'" ;
 		}
-		if(schoolDistrict == null || schoolDistrict.isEmpty()) {
-			schoolDistrict =  "%";
+		if(schoolDistrict != null && !schoolDistrict.isEmpty()) {
+			sql = sql + " and PS.district = '" + schoolDistrict + "'" ;
 		}
-		if(religion == null || religion.isEmpty()) {
-			religion =  "%";
+		if(religion != null && !religion.isEmpty()) {
+			sql = sql + " and PS.religion = '" + religion + "'" ;
+		}
+		if(studentGender != null && !studentGender.isEmpty()) {
+			sql = sql + " and PS.student_gender = '" + studentGender + "'" ;
 		}
 		
-		if(studentGender == null || studentGender.isEmpty()) {
-			studentGender =  "%";
+		List<Object[]> schoolsData = em.createNativeQuery(sql).getResultList();
+		
+		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
+		
+		for(Object[] schoolData : schoolsData) {
+			Map<String, Object> school = new HashMap<String, Object>();
+			school.put("id", schoolData[0]);
+			school.put("schoolName", schoolData[1]);
+			school.put("schoolCategory", schoolData[2]);
+			school.put("religion", schoolData[3]);
+			school.put("district", schoolData[4]);
+			school.put("schoolId", schoolData[5]);
+			school.put("studentGender", schoolData[6]);
+			result.add(school);
 		}
-		Iterable<PSEntity> entities = pSJpaRepository.findAllConditional(schoolCategory,schoolDistrict,religion,studentGender);
-		List<PSEntity> beans = new ArrayList<PSEntity>();
-
-		for (PSEntity psjEntity : entities) {
-			beans.add(psjEntity);
-		}
-		return beans;
+		return result;
 	}
+
 	@Override
 	public List<PSEntity> findAll() {
 		Iterable<PSEntity> entities = pSJpaRepository.findAll();

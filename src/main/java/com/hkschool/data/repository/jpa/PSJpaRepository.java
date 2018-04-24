@@ -3,7 +3,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 
 import com.hkschool.bean.jpa.PSEntity;
 
@@ -32,6 +31,4 @@ public interface PSJpaRepository extends PagingAndSortingRepository<PSEntity, Lo
 	@Query(nativeQuery=true, value="select distinct PS.school_id from primary_school PS")
 	List<String> getSchoolId();
 
-	@Query(nativeQuery=true, value="select * from primary_school PS where PS.school_category like :schoolCategory and PS.district like :schoolDistrict and PS.religion like :religion and PS.student_gender like :studentGender order by PS.district DESC")
-	Iterable<PSEntity> findAllConditional(@Param(value = "schoolCategory") String schoolCategory, @Param(value = "schoolDistrict") String schoolDistrict,  @Param(value = "religion") String religion, @Param(value = "studentGender") String studentGender);
 }

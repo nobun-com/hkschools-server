@@ -60,7 +60,7 @@ public interface SecondarySchoolService {
 
 	Map<String, Object> initFilter();
 
-	List<SSEntity> findAllSecondary(String schoolCategory, String schoolDistrict,String religion, String studentGender, String sponsoringBody);
+	List<Map<String, Object>> findAllSecondary(String schoolCategory, String schoolDistrict,String religion, String studentGender, String sponsoringBody);
 
 	List<Map<String, Object>> getDistrict();
 

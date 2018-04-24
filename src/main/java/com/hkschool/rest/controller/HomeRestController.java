@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.hkschool.bean.jpa.PSEntity;
-import com.hkschool.bean.jpa.SSEntity;
 import com.hkschool.business.service.KinderGartenService;
 import com.hkschool.business.service.PrimarySchoolService;
 import com.hkschool.business.service.SecondarySchoolService;
@@ -66,15 +64,14 @@ public class HomeRestController extends BaseController {
 	@RequestMapping(value = "/getAllPrimarySchool", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<PSEntity>> findAllPrimary(HttpServletRequest req) {
+	public Map<String, List<Map<String, Object>>> findAllPrimary(HttpServletRequest req) {
 		String schoolCategory = req.getParameter("schoolCategory");
 		String schoolDistrict = req.getParameter("schoolDistrict");
 		String religion = req.getParameter("religion");
 		String studentGender = req.getParameter("studentGender");
-		Map<String, List<PSEntity>> data = new HashMap<String, List<PSEntity>>();
+		Map<String, List<Map<String, Object>>> data = new HashMap<String, List<Map<String, Object>>>();
 		data.put("data", primaryService.findAllPrimary(schoolCategory,schoolDistrict,religion,studentGender));
 		return data;
-
 	}
 	
 	@Resource
@@ -90,13 +87,13 @@ public class HomeRestController extends BaseController {
 	@RequestMapping(value = "/getAllSecondarySchool", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
-	public Map<String, List<SSEntity>> findAllSecondary(HttpServletRequest req) {
+	public Map<String, List<Map<String, Object>>> findAllSecondary(HttpServletRequest req) {
 		String schoolCategory = req.getParameter("schoolCategory");
 		String schoolDistrict = req.getParameter("schoolDistrict");
 		String religion = req.getParameter("religion");
 		String studentGender = req.getParameter("studentGender");
 		String sponsoringBody =req.getParameter("sponsoringBody");
-		Map<String, List<SSEntity>> data = new HashMap<String, List<SSEntity>>();
+		Map<String, List<Map<String, Object>>> data = new HashMap<String, List<Map<String, Object>>>();
 		data.put("data",secondaryservice.findAllSecondary(schoolCategory,schoolDistrict,religion,studentGender,sponsoringBody));
 		return data;
 	}
