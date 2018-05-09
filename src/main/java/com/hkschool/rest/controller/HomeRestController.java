@@ -98,4 +98,24 @@ public class HomeRestController extends BaseController {
 		return data;
 	}
 	
+	@RequestMapping(value = "/getLocations", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public List<Object[]> getLocations(HttpServletRequest req) {
+		String schoolType = req.getParameter("schoolType");
+		String district = req.getParameter("district");
+		return secondaryservice.getLocations(schoolType, district);
+	}
+	
+	@RequestMapping(value = "/getDistricts", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	public Map<String, List<Map<String, Object>>> getDistricts(HttpServletRequest req) {
+		HashMap<String, List<Map<String, Object>>> result = new HashMap<String, List<Map<String, Object>>>();
+		result.put("kindergarten_school", kinderGartenService.getDistricts());
+		result.put("primary_school", primaryService.getDistrict());
+		result.put("secondary_school", secondaryservice.getDistrict());
+		return result;
+	}
+	
 }

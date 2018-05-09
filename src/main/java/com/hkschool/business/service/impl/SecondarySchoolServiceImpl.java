@@ -82,6 +82,13 @@ public class SecondarySchoolServiceImpl implements SecondarySchoolService {
 		return result;
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Object[]> getLocations(String schoolType, String district) {
+		String sql = "select S.lattitude, S.longitude, S.school_name, S.address, S.image, S.tel, S.fax, S.school_website from " + schoolType + " S where S.district = '" + district + "'";
+		return em.createNativeQuery(sql).getResultList();
+	}
+	
 	@Override
 	public SSEntity findByEmail(String email) {
 		// TODO Auto-generated method stub
@@ -118,10 +125,10 @@ public class SecondarySchoolServiceImpl implements SecondarySchoolService {
 
 		List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
 		for(Object[] record : records) {
-		HashMap<String, Object> sale = new HashMap<String, Object>();
-		sale.put("district", record[0]);
-		sale.put("count", record[1]);
-		result.add(sale);
+			HashMap<String, Object> sale = new HashMap<String, Object>();
+			sale.put("district", record[0]);
+			sale.put("count", record[1]);
+			result.add(sale);
 		}
 		return result;
 

@@ -64,4 +64,6 @@ public interface SecondarySchoolService {
 
 	List<Map<String, Object>> getDistrict();
 
+	List<Object[]> getLocations(String schoolType, String district);
+
 }

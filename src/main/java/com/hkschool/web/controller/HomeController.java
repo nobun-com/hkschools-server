@@ -36,6 +36,11 @@ public class HomeController extends BaseController {
 		return "index";
 	}
 
+	@RequestMapping("/map")
+	public String map(Model model) {
+		return "map-view";
+	}
+
 	@RequestMapping("/kindergarten-list")
 	public String kindergartenList(HttpServletRequest request, Model model) {
 		String district = request.getParameter("district");

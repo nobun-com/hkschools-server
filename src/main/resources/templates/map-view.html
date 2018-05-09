@@ -1,0 +1,113 @@
+<html ng-app="app">
+<head>
+	<title>Map view</title>
+	<meta charset="utf-8"></meta>
+
+	<script src="//maps.googleapis.com/maps/api/js?libraries=geometry,places&amp;sensor=false&amp;key=AIzaSyAW0ZIiIHkcInlh8vQRZ8Tzg788QnNzcH4" type="text/javascript" async="async" defer="defer" ></script>
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+	<script type="text/javascript" src="../js/angular.js"></script>
+	<script type="text/javascript" src="../js/location.js"></script>
+	<style type="text/css">
+		#map { 
+		    height: 80%;
+		    border-radius: 5px;
+		    border: 1px solid silver;
+		}
+		table {
+			font-size: small;
+		}
+		th {
+		    width: 40px;
+		    height: 20px;
+		}
+	</style>
+</head>
+<body ng-controller="mapController">
+
+<div class="container-fluid">
+
+	<br></br>
+
+	<div class="form-group">
+	
+	<div class="row">
+        <div id="col1" class="col-sm-8"> <!-- 1st col -->
+	      <div class="row">
+	        <div class="col-sm-5">
+		       	<select class="form-control" ng-model="selectedSchoolType" ng-change="schoolTypeChanged(selectedSchoolType)">
+		        	<option value="kindergarten_school">kindergarten</option>
+		        	<option value="primary_school">primary</option>
+		        	<option value="secondary_school">secondary</option>
+		       	</select>
+			</div>
+	        <div class="col-sm-5">
+		       	<select class="form-control" ng-model="selectedDistrict" ng-change="districtChanged(selectedDistrict)">
+		        	<option ng-repeat="district in districts" ng-value="district.district">{{district.district + ' ' + district.count}}</option>
+		       	</select>
+			</div>
+	        <div class="col-sm-2" style="text-align:center;">
+		        <i class="fa fa-expand" ng-click="view()" style="font-size:30px;"></i>
+			</div>
+	      </div>
+	      <br></br>
+	      <div class="row">
+	        <div class="col-sm-12">
+				<div id="map"></div>
+			</div>
+	      </div>
+        </div>
+
+        <div id="col2" class="col-sm-4" style="height:90%;overflow:auto;"> <!-- 2nd col -->
+        
+	        <div class="panel-group">
+	            <div class="panel panel-primary" ng-repeat="school in schools">
+			      <div class="panel-heading">{{($index+1) + ') ' + school[2]}}</div>
+			      <div class="panel-body">
+			        <div class="col-sm-4">
+						<a ng-click="panTo(school)" href="#"><img style="max-width:115%;margin-left:-15px;" alt="图像不可用" ng-src="{{school[4]}}"> </img></a>
+					</div>
+			        <div class="col-sm-8">
+						<table>
+                            <tbody>
+                               <tr>
+                                  <th>地址 : </th><!-- Address -->
+                                  <td>{{school[3]}}</td>
+                               </tr>
+                               <tr>
+                                  <th>聯繫 : </th><!-- Tel -->
+                                  <td>{{school[5]}}</td>
+                               </tr>
+                               <tr>
+                                  <th>傳真 : </th><!-- Fax -->
+                                  <td>{{school[6]}}</td>
+                               </tr>
+                               <tr>
+                                  <th>網址 : </th><!-- Website -->
+                                  <td><a ng:href="{{school[7]}}" target="_blank">{{school[7]}}</a></td>
+                               </tr>
+                            </tbody>
+                         </table>
+					</div>
+			      </div>
+			    </div>
+	        </div>
+        </div>
+	</div>
+	
+      
+	</div>
+
+
+</div>
+
+
+      
+
+</body>
+</html>
