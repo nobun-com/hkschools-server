@@ -13,12 +13,24 @@
 
 	<script type="text/javascript" src="../js/angular.js"></script>
 	<script type="text/javascript" src="../js/location.js"></script>
+	
+	<link rel="stylesheet" href="../css/colors/main.css" id="colors"></link>
+	<link rel="stylesheet" href="../css/style.css"></link>
+	<script type="text/javascript" src="../scripts/custom.js"></script>
+	
 	<style type="text/css">
 		#map { 
-		    height: 80%;
+		    height: 70%;
 		    border-radius: 5px;
 		    border: 1px solid silver;
 		}
+		.marker-card-header {
+			text-align: center;
+		    color: blue;
+		    font-size: large;
+		    padding: 10px;
+		    font-weight: 900;
+    	}
 		table {
 			font-size: small;
 		}
@@ -26,9 +38,71 @@
 		    width: 40px;
 		    height: 20px;
 		}
-	</style>
+		#navigation.style-1 {
+		    padding:0;
+		    margin-left: 115px;       
+		     background-color: #66b2ff;
+		    float: right;
+		    margin-right: 75px;
+		}
+		header.fullwidth .container {
+		    width: 100%;  
+		    padding: 0px 60px;
+		}
+		.active{
+		    background: #1a8cff;   
+		}
+		#navigation.style-1 ul li {
+		    margin: 0px;
+		}
+		.links.fa {
+		    margin-right: 10px;
+		
+		}
+		a:hover,a:focus{
+			text-decoration:none;
+		}
+	
+</style>
+
+
 </head>
 <body ng-controller="mapController">
+<header id="header-container" style="background-color: #14a661;">
+	<!-- Header -->
+	<div id="header">
+		<div class="container">
+			
+			<div class="left-side">
+				<div id="logo">
+					<a href="home"><img src="../images/logo .svg" style="width: 60px;height: 60px;" alt=""></img>
+					<img src="../images/header.png"  alt=""></img></a>
+				</div>
+			</div>
+			<div class="right-side">
+				<div class="searchContent"></div>
+			</div>
+			<div class="clearfix"></div>
+			<div class="menu-responsive">
+				<i class="fa fa-reorder menu-trigger"></i>
+			</div>
+
+			<nav id="navigation" class="style-1">
+				<ul id="responsive">
+					<li><a href="/kindergarten-list">幼稚園</a></li>
+					<li><a href="/primary-list">小學</a></li>
+					<li><a href="/secondary-list">中學 </a></li>
+					<li class="active"><a href="/map">地圖 </a></li>
+						
+					
+				</ul>
+			</nav>
+			<div class="clearfix"></div>
+		</div>
+	</div>
+	<!-- Header / End -->
+</header>
+
 
 <div class="container-fluid">
 
@@ -41,18 +115,18 @@
 	      <div class="row">
 	        <div class="col-sm-5">
 		       	<select class="form-control" ng-model="selectedSchoolType" ng-change="schoolTypeChanged(selectedSchoolType)">
-		        	<option value="kindergarten_school">kindergarten</option>
-		        	<option value="primary_school">primary</option>
-		        	<option value="secondary_school">secondary</option>
+		        	<option value="kindergarten_school">幼兒園</option>
+		        	<option value="primary_school">小學</option>
+		        	<option value="secondary_school">中學</option>
 		       	</select>
 			</div>
 	        <div class="col-sm-5">
 		       	<select class="form-control" ng-model="selectedDistrict" ng-change="districtChanged(selectedDistrict)">
-		        	<option ng-repeat="district in districts" ng-value="district.district">{{district.district + ' ' + district.count}}</option>
+		        	<option ng-repeat="district in districts" ng-value="district.district" ng-selected="isSelectedDistrict(district.district)">{{district.district + ' ' + district.count}}</option>
 		       	</select>
 			</div>
 	        <div class="col-sm-2" style="text-align:center;">
-		        <i class="fa fa-expand" ng-click="view()" style="font-size:30px;"></i>
+		        <i class="fa fa-bars" ng-click="view()" style="font-size:35px;"></i>
 			</div>
 	      </div>
 	      <br></br>
@@ -63,7 +137,7 @@
 	      </div>
         </div>
 
-        <div id="col2" class="col-sm-4" style="height:90%;overflow:auto;"> <!-- 2nd col -->
+        <div id="col2" class="col-sm-4" style="height:80%;overflow:auto;"> <!-- 2nd col -->
         
 	        <div class="panel-group">
 	            <div class="panel panel-primary" ng-repeat="school in schools">
