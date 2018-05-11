@@ -6,17 +6,18 @@
 	function mapController($http, $scope, $window, $filter, $location) {
 
         var infoWindow, rootMap;
-        $scope.viewFlag = true;
+        var cardsOnPage = 10;
+        var activePageIndex = 0;
+        var markers = [];
+        var viewFlag = true;
 
-        function reCenter(position) {
-	        var options = {
-	            center: position,
-	            zoom: 15,
-	            zoomControl: true,
-	            scaleControl: true
-	        }
-	        rootMap = new google.maps.Map(document.getElementById("map"), options);
+        var options = {
+            center: new google.maps.LatLng(22.3964, 114.1095),
+            zoom: 15,
+            zoomControl: true,
+            scaleControl: true
         }
+        rootMap = new google.maps.Map(document.getElementById("map"), options);
 
         function contentDiv(school) {
             var contentDiv = 
@@ -53,18 +54,19 @@
             return contentDiv;
         }
         
-        function setMarker(map, school, index) {
+        function setMarker(school, index) {
         	var position = new google.maps.LatLng(school[0], school[1]);
-            var marker;
             var markerOptions = {
                 position: position,
-                map: map,
+                map: rootMap,
                 title: school[2],
                 icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + index + '|FE6256|000000',
 	            animation: google.maps.Animation.DROP
             };
 
-            marker = new google.maps.Marker(markerOptions);
+            var marker = new google.maps.Marker(markerOptions);
+
+            markers.push(marker);
 
             google.maps.event.addListener(marker, 'click', function () {
                 if (infoWindow !== void 0) {
@@ -72,19 +74,30 @@
                 }
                 var infoWindowOptions = {content: contentDiv(school)};
                 infoWindow = new google.maps.InfoWindow(infoWindowOptions);
-                infoWindow.open(map, marker);
+                infoWindow.open(rootMap, marker);
             });
+        }
+
+        function refreshMap(schools) {
+        	$scope.schoolsToDisplay = schools;
+			for(var index = 0; index < markers.length; index++) {
+				markers[index].setMap(null);
+			}
+			markers = [];
+			$scope.panTo(schools[0]);
+			for(var index = 0; index < schools.length; index++) {
+				var school = schools[index];
+		        setMarker(school, index+1);
+			}
         }
 
 		$scope.getLocations= function(schoolType, district){
 			var api = "/getLocations?schoolType=" + schoolType + "&district=" + district;
 			$http.get(api).then(function(response) {
 				$scope.schools = response.data;
-				reCenter(new google.maps.LatLng($scope.schools[0][0], $scope.schools[0][1]));
-				for(var index = 0; index < $scope.schools.length; index++) {
-					var school = $scope.schools[index];
-			        setMarker(rootMap, school, index+1);
-				}
+				var btnsSize = ($scope.schools.length % cardsOnPage == 0) ? ($scope.schools.length / cardsOnPage) : (parseInt($scope.schools.length / cardsOnPage) + 1);
+				$scope.btns = new Array(btnsSize);
+				$scope.showPage(0);
 			},function(error) { })
 		}
 
@@ -113,25 +126,37 @@
 		}
 		
 		$scope.view = function() {
-			if($scope.viewFlag) {
+			if(viewFlag) {
 				$('#col1').removeClass('col-sm-8');
 				$('#col1').addClass('col-sm-12');
+				$('#view-btn').removeClass('fa-expand');
+				$('#view-btn').addClass('fa-compress');
 				$('#col2').hide(1000);
 			} else {
 				$('#col1').removeClass('col-sm-12');
 				$('#col1').addClass('col-sm-8');
 				$('#col2').show(1000);
+				$('#view-btn').addClass('fa-expand');
+				$('#view-btn').removeClass('fa-compress');
 			}
-			$scope.viewFlag = !$scope.viewFlag;
+			viewFlag = !viewFlag;
 		}
 		
 		$scope.panTo = function(school) {
-			var latLng = new google.maps.LatLng(school[0], school[1]);
-			//rootMap.panTo(latLng);
+			rootMap.panTo(new google.maps.LatLng(school[0], school[1]));
 		}
 
 		$scope.isSelectedDistrict = function(district) {
 			return $scope.selectedDistrict == district;
+		}
+		
+		$scope.showPage = function(pageIndex) {
+			activePageIndex = pageIndex;
+			refreshMap($scope.schools.slice((pageIndex * cardsOnPage), (pageIndex * cardsOnPage) + cardsOnPage));
+		}
+		
+		$scope.isActivePage = function(pageIndex) {
+			return activePageIndex == pageIndex;
 		}
 
 	}

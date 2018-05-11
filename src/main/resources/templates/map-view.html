@@ -20,7 +20,7 @@
 	
 	<style type="text/css">
 		#map { 
-		    height: 70%;
+		    height: 77%;
 		    border-radius: 5px;
 		    border: 1px solid silver;
 		}
@@ -61,6 +61,19 @@
 		}
 		a:hover,a:focus{
 			text-decoration:none;
+		}
+		.pagination-btn-group {
+		    overflow-x: auto;
+		    width: 99%;
+		    display: flex;
+			justify-content: center;
+		}
+		.pagination-btn {
+			margin : 2px;
+			border-radius: 3px;
+		}
+		.row {
+			margin : 5px -20px;
 		}
 	
 </style>
@@ -106,8 +119,6 @@
 
 <div class="container-fluid">
 
-	<br></br>
-
 	<div class="form-group">
 	
 	<div class="row">
@@ -126,10 +137,10 @@
 		       	</select>
 			</div>
 	        <div class="col-sm-2" style="text-align:center;">
-		        <i class="fa fa-bars" ng-click="view()" style="font-size:35px;"></i>
+		        <i id="view-btn" class="fa fa-expand" ng-click="view()" style="font-size:30px;"></i>
 			</div>
 	      </div>
-	      <br></br>
+
 	      <div class="row">
 	        <div class="col-sm-12">
 				<div id="map"></div>
@@ -137,11 +148,11 @@
 	      </div>
         </div>
 
-        <div id="col2" class="col-sm-4" style="height:80%;overflow:auto;"> <!-- 2nd col -->
+        <div id="col2" class="col-sm-4"> <!-- 2nd col -->
         
-	        <div class="panel-group">
-	            <div class="panel panel-primary" ng-repeat="school in schools">
-			      <div class="panel-heading">{{($index+1) + ') ' + school[2]}}</div>
+	        <div class="panel-group" style="height:77%;overflow:auto;">
+	            <div class="panel panel-primary" ng-repeat="school in schoolsToDisplay">
+			      <div class="panel-heading" style="padding:0px 10px;height: 28px">{{($index+1) + ') ' + school[2]}}</div>
 			      <div class="panel-body">
 			        <div class="col-sm-4">
 						<a ng-click="panTo(school)" href="#"><img style="max-width:115%;margin-left:-15px;" alt="图像不可用" ng-src="{{school[4]}}"> </img></a>
@@ -171,6 +182,9 @@
 			      </div>
 			    </div>
 	        </div>
+	        <div class="pagination-btn-group">
+	        	<button class="pagination-btn btn btn-xs" ng-class="isActivePage($index) ? 'btn-primary' : 'btn-default'" ng-repeat="btn in btns track by $index" ng-click="showPage($index)">{{$index+1}}</button>
+	        </div>
         </div>
 	</div>
 	
@@ -179,7 +193,30 @@
 
 
 </div>
+<!-- Copyright -->
+<div class="row">
+	<div class="col-md-12">
+		<div class="copyrights">©2017 Myschool_Hk。版權所有</div>
+	</div>
+</div>
 
+<a href="#" class="scrollToTop"><img src="../images/gototop.png" style="width:40px"></img></a>
+
+<script>
+$(document).ready(function(){
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 100) {
+			$('.scrollToTop').fadeIn();
+		} else {
+			$('.scrollToTop').fadeOut();
+		}
+	});
+	$('.scrollToTop').click(function(){
+		$('html, body').animate({scrollTop : 0},800);
+		return false;
+	});
+})
+</script>
 
       
 
