@@ -85,7 +85,7 @@ public class SecondarySchoolServiceImpl implements SecondarySchoolService {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Object[]> getLocations(String schoolType, String district) {
-		String sql = "select S.lattitude, S.longitude, S.school_name, S.address, S.image, S.tel, S.fax, S.school_website from " + schoolType + " S where S.district = '" + district + "'";
+		String sql = "select S.lattitude, S.longitude, S.school_name, S.address, S.image, S.tel, S.fax, S.school_website, S.id from " + schoolType + "_school S where S.district = '" + district + "'";
 		return em.createNativeQuery(sql).getResultList();
 	}
 	

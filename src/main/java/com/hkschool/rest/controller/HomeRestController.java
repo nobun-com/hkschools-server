@@ -112,9 +112,9 @@ public class HomeRestController extends BaseController {
 	@ResponseBody
 	public Map<String, List<Map<String, Object>>> getDistricts(HttpServletRequest req) {
 		HashMap<String, List<Map<String, Object>>> result = new HashMap<String, List<Map<String, Object>>>();
-		result.put("kindergarten_school", kinderGartenService.getDistricts());
-		result.put("primary_school", primaryService.getDistrict());
-		result.put("secondary_school", secondaryservice.getDistrict());
+		result.put("kindergarten", kinderGartenService.getDistricts());
+		result.put("primary", primaryService.getDistrict());
+		result.put("secondary", secondaryservice.getDistrict());
 		return result;
 	}
 	

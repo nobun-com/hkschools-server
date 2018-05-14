@@ -126,9 +126,9 @@
 	      <div class="row">
 	        <div class="col-sm-5">
 		       	<select class="form-control" ng-model="selectedSchoolType" ng-change="schoolTypeChanged(selectedSchoolType)">
-		        	<option value="kindergarten_school">幼兒園</option>
-		        	<option value="primary_school">小學</option>
-		        	<option value="secondary_school">中學</option>
+		        	<option value="kindergarten">幼兒園</option>
+		        	<option value="primary">小學</option>
+		        	<option value="secondary">中學</option>
 		       	</select>
 			</div>
 	        <div class="col-sm-5">
@@ -175,6 +175,9 @@
                                <tr>
                                   <th>網址 : </th><!-- Website -->
                                   <td><a ng:href="{{school[7]}}" target="_blank">{{school[7]}}</a></td>
+                               </tr>
+                               <tr>
+                                  <td colspan="2"><a ng:href="/{{selectedSchoolType}}-detail?schoolId={{school[8]}}">更多信息</a></td><!-- more -->
                                </tr>
                             </tbody>
                          </table>

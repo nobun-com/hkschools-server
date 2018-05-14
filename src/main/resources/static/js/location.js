@@ -15,7 +15,9 @@
             center: new google.maps.LatLng(22.3964, 114.1095),
             zoom: 15,
             zoomControl: true,
-            scaleControl: true
+            scaleControl: true,
+            streetViewControl: false,
+            fullscreenControl: false,
         }
         rootMap = new google.maps.Map(document.getElementById("map"), options);
 
@@ -44,7 +46,10 @@
 						+"         </tr>"
 						+"         <tr>"
 						+"            <th>網址 : </th><!-- Website -->"
-						+"            <td><a ng:href='" + school[7] + "' target='_blank'>" + school[7] + "</a></td>"
+						+"            <td><a href='" + school[7] + "' target='_blank'>" + school[7] + "</a></td>"
+						+"         </tr>"
+						+"         <tr>"
+						+"            <td colspan='2'><a href='/" + $scope.selectedSchoolType + "-detail?schoolId=" + school[8] + "' >更多信息</a></td>"
 						+"         </tr>"
 						+"      </tbody>"
 						+"  </table>"
@@ -102,7 +107,7 @@
 		}
 
 		$scope.getDistricts= function(){
-			$scope.selectedSchoolType = 'kindergarten_school';
+			$scope.selectedSchoolType = 'kindergarten';
 			$http.get("/getDistricts").then(function(response) {
 				$scope.allDistricts = response.data;
 				$scope.selectedDistrict = $scope.allDistricts[$scope.selectedSchoolType][0].district;

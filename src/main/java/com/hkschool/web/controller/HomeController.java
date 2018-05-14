@@ -79,7 +79,7 @@ public class HomeController extends BaseController {
 		return "index";
 	}
 	
-	@RequestMapping("/kinderGarten-detail")
+	@RequestMapping("/kindergarten-detail")
 	public String kindergartenDetail(HttpServletRequest request, Model model) {
 		KGEntity kGEntity =kinderGartenService.findById(Long.parseLong(request.getParameter("schoolId")));
 		model.addAttribute("kGEntity",kGEntity);
