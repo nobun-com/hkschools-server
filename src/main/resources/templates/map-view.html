@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="../css/colors/main.css" id="colors"></link>
 	<link rel="stylesheet" href="../css/style.css"></link>
 	<script type="text/javascript" src="../scripts/custom.js"></script>
+	<script type="text/javascript" src="../scripts/jpanelmenu.min.js"></script>
 	
 	<style type="text/css">
 		#map { 
@@ -75,12 +76,17 @@
 		.row {
 			margin : 5px -20px;
 		}
+		.image-view{
+			height:77%;overflow:auto;
+		}
+		
 	
 </style>
 
 
 </head>
 <body ng-controller="mapController">
+<div id="wrapper">
 <header id="header-container" style="background-color: #14a661;">
 	<!-- Header -->
 	<div id="header">
@@ -122,21 +128,21 @@
 	<div class="form-group">
 	
 	<div class="row">
-        <div id="col1" class="col-sm-8"> <!-- 1st col -->
+        <div id="col1" class="col-sm-12 col-md-8 col-xs-12"> <!-- 1st col -->
 	      <div class="row">
-	        <div class="col-sm-5">
+	        <div class="col-md-5 col-sm-6">
 		       	<select class="form-control" ng-model="selectedSchoolType" ng-change="schoolTypeChanged(selectedSchoolType)">
 		        	<option value="kindergarten">幼兒園</option>
 		        	<option value="primary">小學</option>
 		        	<option value="secondary">中學</option>
 		       	</select>
 			</div>
-	        <div class="col-sm-5">
+	        <div class="col-md-5 col-sm-6 ">
 		       	<select class="form-control" ng-model="selectedDistrict" ng-change="districtChanged(selectedDistrict)">
 		        	<option ng-repeat="district in districts" ng-value="district.district" ng-selected="isSelectedDistrict(district.district)">{{district.district + ' ' + district.count}}</option>
 		       	</select>
 			</div>
-	        <div class="col-sm-2" style="text-align:center;">
+	        <div class="col-sm-2 hide-toggle" style="text-align:center;">
 		        <i id="view-btn" class="fa fa-expand" ng-click="view()" style="font-size:30px;"></i>
 			</div>
 	      </div>
@@ -148,9 +154,9 @@
 	      </div>
         </div>
 
-        <div id="col2" class="col-sm-4"> <!-- 2nd col -->
-        
-	        <div class="panel-group" style="height:77%;overflow:auto;">
+        <div id="col2" class="col-sm-12 col-md-4 col-xs-12"> <!-- 2nd col -->
+     
+	        <div class="panel-group image-view">
 	            <div class="panel panel-primary" ng-repeat="school in schoolsToDisplay">
 			      <div class="panel-heading" style="padding:0px 10px;height: 28px">{{($index+1) + ') ' + school[2]}}</div>
 			      <div class="panel-body">
@@ -204,8 +210,8 @@
 </div>
 
 <a href="#" class="scrollToTop"><img src="../images/gototop.png" style="width:40px"></img></a>
-
-<script>
+</div>
+<!-- <script>
 $(document).ready(function(){
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > 100) {
@@ -219,8 +225,27 @@ $(document).ready(function(){
 		return false;
 	});
 })
-</script>
+</script> -->
+<script>
+$(document).ready(function () {
 
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 100) {
+            $('.pagination-btn').fadeIn();
+        } else {
+            $('.pagination-btn').fadeOut();
+        }
+    });
+
+    $('.pagination-btn').click(function () {
+        $("html,body").animate({
+            scrollTop: 0
+        }, 600);
+        return false;
+    });
+
+});
+</script>
       
 
 </body>

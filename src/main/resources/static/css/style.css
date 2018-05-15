@@ -792,6 +792,13 @@ body #navigation ul ul {
 	#header-container.header-style-2 .header-widget li i { width: 50px; margin: 0 0 0 0px; display: inline-block; text-align: left; top: 3px;}
 
 	.header-widget { text-align: left; margin: 0 0 15px 0;}
+	.image-view{
+				height:auto !important;
+				overflow:auto !important;
+			}
+			.hide-toggle{
+				display: none;
+			}
 }
 
 
