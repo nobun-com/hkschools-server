@@ -2,7 +2,7 @@
 <head>
 	<title>Map view</title>
 	<meta charset="utf-8"></meta>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<script src="//maps.googleapis.com/maps/api/js?libraries=geometry,places&amp;sensor=false&amp;key=AIzaSyAW0ZIiIHkcInlh8vQRZ8Tzg788QnNzcH4" type="text/javascript" async="async" defer="defer" ></script>
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="../scripts/jpanelmenu.min.js"></script>
 	
 	<style type="text/css">
+	
 		#map { 
 		    height: 77%;
 		    border-radius: 5px;
@@ -81,6 +82,11 @@
 		}
 		
 	
+	@media (max-width:769px){
+	.map-container {    
+    padding: 0px 60px !important;
+    }
+	}
 </style>
 
 
@@ -90,7 +96,7 @@
 <header id="header-container" style="background-color: #14a661;">
 	<!-- Header -->
 	<div id="header">
-		<div class="container">
+		<div class="container map-container">
 			
 			<div class="left-side">
 				<div id="logo">
@@ -211,7 +217,7 @@
 
 <a href="#" class="scrollToTop"><img src="../images/gototop.png" style="width:40px"></img></a>
 </div>
-<!-- <script>
+<script>
 $(document).ready(function(){
 	$(window).scroll(function(){
 		if ($(this).scrollTop() > 100) {
@@ -225,7 +231,7 @@ $(document).ready(function(){
 		return false;
 	});
 })
-</script> -->
+</script>
 <script>
 $(document).ready(function () {
 

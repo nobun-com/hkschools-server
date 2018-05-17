@@ -132,14 +132,14 @@
 		
 		$scope.view = function() {
 			if(viewFlag) {
-				$('#col1').removeClass('col-sm-8');
-				$('#col1').addClass('col-sm-12');
+				$('#col1').removeClass('col-md-8');
+				$('#col1').addClass('col-md-12');
 				$('#view-btn').removeClass('fa-expand');
 				$('#view-btn').addClass('fa-compress');
 				$('#col2').hide(1000);
 			} else {
-				$('#col1').removeClass('col-sm-12');
-				$('#col1').addClass('col-sm-8');
+				$('#col1').removeClass('col-md-12');
+				$('#col1').addClass('col-md-8');
 				$('#col2').show(1000);
 				$('#view-btn').addClass('fa-expand');
 				$('#view-btn').removeClass('fa-compress');
