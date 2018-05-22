@@ -13,7 +13,7 @@ public interface KGJpaRepository extends PagingAndSortingRepository<KGEntity, Lo
 	
 	KGEntity findById(Long id);
 
-	@Query(nativeQuery=true, value="select distinct KG.school_category from kindergarten_school KG")
+	@Query(nativeQuery=true, value="select distinct KG.school_categoury_title from kindergarten_school KG")
 	List<String> getSchoolCategorys();
 
 	@Query(nativeQuery=true, value="select distinct KG.district, COUNT(*) from kindergarten_school KG group by KG.district order by KG.district DESC")

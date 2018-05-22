@@ -34,11 +34,11 @@ public class KinderGartenServiceImpl implements KinderGartenService {
 	@Override
 	public List<Map<String, Object>> findAll(String schoolCategoury, String schoolDistrict, String withchildcareservicesforchildrenagedunder2,String time) {
 
-		String sql = "select KG.id, KG.district, KG.school_category, KG.nurseryamsessionfees, KG.nurserypmsessionfees, KG.nurserywdsessionfees, KG.withchildcareservicesforchildrenagedunder2, "
+		String sql = "select KG.id, KG.district, KG.school_categoury_title, KG.nurseryamsessionfees, KG.nurserypmsessionfees, KG.nurserywdsessionfees, KG.withchildcareservicesforchildrenagedunder2, "
 				+ "KG.total_no_of_permitte_accommodation_of_classroomsinuse, KG.time, KG.school_name from kindergarten_school KG where KG.id > 0";
 
 		if(schoolCategoury != null && !schoolCategoury.isEmpty()) {
-			sql = sql + " and KG.school_category = '" + schoolCategoury + "'" ;
+			sql = sql + " and KG.school_categoury_title = '" + schoolCategoury + "'" ;
 		}
 		if(schoolDistrict != null && !schoolDistrict.isEmpty()) {
 			sql = sql + " and KG.district = '" + schoolDistrict + "'" ;

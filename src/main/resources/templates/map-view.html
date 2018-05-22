@@ -162,12 +162,12 @@
 
         <div id="col2" class="col-sm-12 col-md-4 col-xs-12"> <!-- 2nd col -->
      
-	        <div class="panel-group image-view">
+	        <div id="img_div" class="panel-group image-view">
 	            <div class="panel panel-primary" ng-repeat="school in schoolsToDisplay">
 			      <div class="panel-heading" style="padding:0px 10px;height: 28px">{{($index+1) + ') ' + school[2]}}</div>
 			      <div class="panel-body">
 			        <div class="col-sm-4">
-						<a ng-click="panTo(school)" href="#"><img style="max-width:115%;margin-left:-15px;" alt="图像不可用" ng-src="{{school[4]}}"> </img></a>
+						<a ng-click="panTo(school)" href="#"><img  class="hidden-xs" style="max-width:115%;margin-left:-15px;" alt="图像不可用" ng-src="{{school[4]}}"> </img></a>
 					</div>
 			        <div class="col-sm-8">
 						<table>
@@ -189,7 +189,7 @@
                                   <td><a ng:href="{{school[7]}}" target="_blank">{{school[7]}}</a></td>
                                </tr>
                                <tr>
-                                  <td colspan="2"><a ng:href="/{{selectedSchoolType}}-detail?schoolId={{school[8]}}">更多信息</a></td><!-- more -->
+                                  <td colspan="2"><a ng:href="/{{selectedSchoolType}}-detail?schoolId={{school[8]}}">[更多信息]</a></td><!-- more -->
                                </tr>
                             </tbody>
                          </table>
@@ -231,28 +231,7 @@ $(document).ready(function(){
 		return false;
 	});
 })
-</script>
-<script>
-$(document).ready(function () {
-
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 100) {
-            $('.pagination-btn').fadeIn();
-        } else {
-            $('.pagination-btn').fadeOut();
-        }
-    });
-
-    $('.pagination-btn').click(function () {
-        $("html,body").animate({
-            scrollTop: 0
-        }, 600);
-        return false;
-    });
-
-});
-</script>
-      
+</script>      
 
 </body>
 </html>

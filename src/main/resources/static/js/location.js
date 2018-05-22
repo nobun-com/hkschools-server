@@ -27,7 +27,7 @@
 					+"<div class='marker-card-header'>" + school[2] + "</div>"
 					+"<div>"
 						+"	<div class='col-sm-4'>"
-						+"		<img style='max-width:100px;' class='img-thumbnail' alt='图像不可用' src='" + school[4] + "'> </img>"
+						+"		<img style='max-width:100px;' class='hidden-xs img-thumbnail' alt='图像不可用' src='" + school[4] + "'> </img>"
 						+"	</div>"
 						+"	<div class='col-sm-8'>"
 						+"	<table>"
@@ -49,7 +49,7 @@
 						+"            <td><a href='" + school[7] + "' target='_blank'>" + school[7] + "</a></td>"
 						+"         </tr>"
 						+"         <tr>"
-						+"            <td colspan='2'><a href='/" + $scope.selectedSchoolType + "-detail?schoolId=" + school[8] + "' >更多信息</a></td>"
+						+"            <td colspan='2'><a href='/" + $scope.selectedSchoolType + "-detail?schoolId=" + school[8] + "' >[更多信息]</a></td>"
 						+"         </tr>"
 						+"      </tbody>"
 						+"  </table>"
@@ -158,6 +158,7 @@
 		$scope.showPage = function(pageIndex) {
 			activePageIndex = pageIndex;
 			refreshMap($scope.schools.slice((pageIndex * cardsOnPage), (pageIndex * cardsOnPage) + cardsOnPage));
+			$('#img_div').scrollTop(0)
 		}
 		
 		$scope.isActivePage = function(pageIndex) {
