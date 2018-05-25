@@ -11,6 +11,14 @@
         var markers = [];
         var viewFlag = true;
 
+        var urlSchoolType = $location.url().replace("/", "");
+        
+        if (urlSchoolType) {
+    		$scope.selectedSchoolType = urlSchoolType;
+        } else {
+    		$scope.selectedSchoolType = 'kindergarten';
+        }
+
         var options = {
             center: new google.maps.LatLng(22.3964, 114.1095),
             zoom: 15,
@@ -107,7 +115,6 @@
 		}
 
 		$scope.getDistricts= function(){
-			$scope.selectedSchoolType = 'kindergarten';
 			$http.get("/getDistricts").then(function(response) {
 				$scope.allDistricts = response.data;
 				$scope.selectedDistrict = $scope.allDistricts[$scope.selectedSchoolType][0].district;
