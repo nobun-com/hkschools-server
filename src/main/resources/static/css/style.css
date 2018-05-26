@@ -12237,8 +12237,8 @@ body{
   height: 40px !important;
   }
   .page-heading {
-       padding: 0 0 10px 0;
-    border-bottom: 3px dotted #d8d9d4;
+    padding: 0 0 10px 0;
+    font-size: xx-large;
     margin-bottom: 20px;
     color: #66b2ff;
 }
