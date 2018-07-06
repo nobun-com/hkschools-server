@@ -11,15 +11,12 @@ var infoBox_ratingType = 'star-rating';
     	var locations = [];
       var ib = new InfoBox();
       if (pSEntity !=""){
-    	  console.log("pSEntity",pSEntity);
     	  var locData = [locationData('listings-single-page.html','images/listing-item-02.jpg', pSEntity.schoolName, pSEntity.address, '5.0', '23'), pSEntity.lattitude, pSEntity.longitude, i, '<i class="im im-icon-Map-Marker2" style="color: red;"></i>'];
     	  locations.push(locData);
       } else if (kGEntity !=""){
-    	  console.log("kGEntity",kGEntity);
     	  var locData = [locationData('listings-single-page.html','images/listing-item-02.jpg', kGEntity.schoolName, kGEntity.address, '5.0', '23'), kGEntity.lattitude, kGEntity.longitude, i, '<i class="im im-icon-Map-Marker2" style="color: red;"></i>'];
     	  locations.push(locData);
       } else if (sSEntity !=""){
-    	  console.log("sSEntity",sSEntity);
     	  var locData = [locationData('listings-single-page.html','images/listing-item-02.jpg', sSEntity.schoolName, sSEntity.address, '5.0', '23'), sSEntity.lattitude, sSEntity.longitude, i, '<i class="im im-icon-Map-Marker2" style="color: red;"></i>'];
     	  locations.push(locData);
       }
@@ -64,7 +61,6 @@ var infoBox_ratingType = 'star-rating';
       }
 
       var cen = new google.maps.LatLng(locations[0][1], locations[0][2]);
-      console.log("******************", cen);
 
       // Main Map
       var map = new google.maps.Map(document.getElementById('map'), {

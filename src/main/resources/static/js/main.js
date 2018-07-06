@@ -9,7 +9,12 @@
 	
 	function kindergartenController($http, $scope, $filter, $window, $location) {
 
-		var district = document.getElementById('district').value;
+		var district;
+		
+		if(document.getElementById('district')) {
+			district = document.getElementById('district').value;
+		}
+
 		if(district) {
 			$scope.schoolDistrict = district;
 		}
@@ -62,7 +67,6 @@
 				api = api + "&time=" + $scope.time;
 			}
 			$scope.getAllData(api);
-			console.log(api);
 		}
 		
 		$scope.getKGFilters= function(){
@@ -83,7 +87,12 @@
 
 	function primaryController($http, $scope, $window, $location, $filter) {
 
-		var district = document.getElementById('district').value;
+		var district;
+		
+		if(document.getElementById('district')) {
+			district = document.getElementById('district').value;
+		}
+
 		if(district) {
 			$scope.schoolDistrict = district;
 		}
@@ -137,7 +146,6 @@
 				 api = api + "&schoolId="+ $scope.schoolId;
 			}
 			$scope.getAllPrimaryData(api);
-			console.log(api);
 		}
 		
 		$scope.getPSFilters= function(){
@@ -159,7 +167,12 @@
 
 	function secondaryController($http, $scope, $window, $filter, $location) {
 
-		var district = document.getElementById('district').value;
+		var district;
+		
+		if(document.getElementById('district')) {
+			district = document.getElementById('district').value;
+		}
+
 		if(district) {
 			$scope.schoolDistrict = district;
 		}

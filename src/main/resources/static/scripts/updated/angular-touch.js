@@ -24,7 +24,7 @@
 /* global -ngTouch */
 var ngTouch = angular.module('ngTouch', []);
 
-ngTouch.info({ angularVersion: '1.6.7' });
+//ngTouch.info({ angularVersion: '1.6.7' });
 
 ngTouch.provider('$touch', $TouchProvider);
 
