@@ -73,7 +73,7 @@
                 position: position,
                 map: rootMap,
                 title: school[2],
-                icon: 'http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + index + '|FE6256|000000',
+                icon: 'https://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=' + index + '|FE6256|000000',
 	            animation: google.maps.Animation.DROP
             };
 
