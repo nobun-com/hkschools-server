@@ -119,7 +119,7 @@
 		            { "data": "schoolCategory" },
 		            { "data": "religion" },
 		            { "data": "district" },
-		            { "data": "schoolId" },
+		            { "data": "schoolNetwork" },
 		            { "data": "studentGender" }
 		        ],
 		        "order": [[ 3, "desc" ]]

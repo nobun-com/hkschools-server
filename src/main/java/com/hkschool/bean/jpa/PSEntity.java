@@ -1,4 +1,5 @@
 package com.hkschool.bean.jpa;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,7 @@ public class PSEntity {
 	String schoolFacilitiesTitle;
 	String schoolHistoryTitle;
 	String teachingSituationTitle;
+	String schoolNetwork;
 	
 	String image;
 	String schoolYear2013;
@@ -390,6 +392,12 @@ public class PSEntity {
 	@Lob
 	String facilitySupportforStudentswithSpecialEducationalNeeds;
 	
+	@Column(name="created_on")
+	Date createdOn;
+	
+	@Column(name="updated_on")
+	Date updatedOn;
+
 	public String getWorkExperience0_4Years() {
 		return workExperience0_4Years;
 	}
@@ -1256,6 +1264,23 @@ public class PSEntity {
 	public void setImageTop(String imageTop) {
 		this.imageTop = imageTop;
 	}
-		
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+	public Date getUpdatedOn() {
+		return updatedOn;
+	}
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
+	}
+	public String getSchoolNetwork() {
+		return schoolNetwork;
+	}
+	public void setSchoolNetwork(String schoolNetwork) {
+		this.schoolNetwork = schoolNetwork;
+	}
 	
 }

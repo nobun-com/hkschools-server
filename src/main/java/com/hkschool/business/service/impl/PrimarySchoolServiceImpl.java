@@ -34,7 +34,7 @@ public class PrimarySchoolServiceImpl implements PrimarySchoolService {
 	@Override
 	public List<Map<String, Object>> findAllPrimary(String schoolCategory, String schoolDistrict, String religion, String studentGender) {
 
-		String sql = "select PS.id, PS.school_name, PS.school_category, PS.religion, PS.district, PS.school_id, PS.student_gender from primary_school PS where PS.id > 0";
+		String sql = "select PS.id, PS.school_name, PS.school_category, PS.religion, PS.district, PS.school_network, PS.student_gender from primary_school PS where PS.id > 0";
 
 		if(schoolCategory != null && !schoolCategory.isEmpty()) {
 			sql = sql + " and PS.school_category = '" + schoolCategory + "'" ;
@@ -60,7 +60,7 @@ public class PrimarySchoolServiceImpl implements PrimarySchoolService {
 			school.put("schoolCategory", schoolData[2]);
 			school.put("religion", schoolData[3]);
 			school.put("district", schoolData[4]);
-			school.put("schoolId", schoolData[5]);
+			school.put("schoolNetwork", schoolData[5]);
 			school.put("studentGender", schoolData[6]);
 			result.add(school);
 		}

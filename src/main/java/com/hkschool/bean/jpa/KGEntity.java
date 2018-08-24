@@ -1,4 +1,5 @@
 package com.hkschool.bean.jpa;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,7 +24,6 @@ public class KGEntity {
 	String schoolHistoryTitle;
 	String teachingSituationTitle;
 	int scale;
-	
 	
 	@Column(name="imageTop")
 	@Lob
@@ -381,7 +381,11 @@ public class KGEntity {
 	@Lob
 	String registrationFeeWhole_Daysession;
 	
-	@Column(name="image")
+	@Column(name="created_on")
+	Date createdOn;
+	
+	@Column(name="updated_on")
+	Date updatedOn;
 	@Lob
 	String image;
 	
@@ -973,6 +977,18 @@ public class KGEntity {
 	}
 	public void setSchoolFeesTitle(String schoolFeesTitle) {
 		this.schoolFeesTitle = schoolFeesTitle;
+	}
+	public Date getCreatedOn() {
+		return createdOn;
+	}
+	public void setCreatedOn(Date createdOn) {
+		this.createdOn = createdOn;
+	}
+	public Date getUpdatedOn() {
+		return updatedOn;
+	}
+	public void setUpdatedOn(Date updatedOn) {
+		this.updatedOn = updatedOn;
 	}
 	
 }
